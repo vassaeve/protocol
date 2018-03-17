@@ -1,121 +1,145 @@
-<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/medical/integration/patient/api/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="PatientInterchangeEndPointService" targetNamespace="http://atria.cz/medical/integration/patient/api/">
-  <types>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/medical/integration/patient/api/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/">
-            
-  <xsd:import namespace="http://atria.cz/common/base/info/build/" schemaLocation="https://med.tatar.ru/patients-smart-ws/patient?xsd=http://atria.cz/common/base/buildInfo.xsd"/>
-        
-</xsd:schema>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/medical/integration/patient/api/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/">
-            
-  <xsd:import namespace="http://atria.cz/medical/integration/patient/" schemaLocation="https://med.tatar.ru/patients-smart-ws/patient?xsd=patients.xsd"/>
-        
-</xsd:schema>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/medical/integration/patient/api/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/">
-            
-  <xsd:import namespace="http://atria.cz/medical/integration/patient/api/" schemaLocation="https://med.tatar.ru/patients-smart-ws/patient?xsd=patient_service.xsd"/>
-        
-</xsd:schema>
-  </types>
-  <message name="sendPatient">
-    <part element="tns:sendPatient" name="parameters">
-    </part>
-  </message>
-  <message name="getPatientResponse">
-    <part element="tns:getPatientResponse" name="parameters">
-    </part>
-  </message>
-  <message name="searchPatient">
-    <part element="tns:searchPatient" name="parameters">
-    </part>
-  </message>
-  <message name="searchPatientResponse">
-    <part element="tns:searchPatientResponse" name="parameters">
-    </part>
-  </message>
-  <message name="getVersionResponse">
-    <part element="bi:getVersionResponse" name="getVersionResponse">
-    </part>
-  </message>
-  <message name="getPatient">
-    <part element="tns:getPatient" name="parameters">
-    </part>
-  </message>
-  <message name="sendPatientResponse">
-    <part element="tns:sendPatientResponse" name="parameters">
-    </part>
-  </message>
-  <message name="getVersionRequest">
-    <part element="bi:getVersionRequest" name="getVersionRequest">
-    </part>
-  </message>
-  <portType name="PatientInterchangeEndPoint">
-    <operation name="sendPatient">
-      <input message="tns:sendPatient">
-    </input>
-      <output message="tns:sendPatientResponse">
-    </output>
-    </operation>
-    <operation name="getPatient">
-      <input message="tns:getPatient">
-    </input>
-      <output message="tns:getPatientResponse">
-    </output>
-    </operation>
-    <operation name="searchPatient">
-      <input message="tns:searchPatient">
-    </input>
-      <output message="tns:searchPatientResponse">
-    </output>
-    </operation>
-    <operation name="getVersion">
-      <input message="tns:getVersionRequest" name="getVersionRequest">
-    </input>
-      <output message="tns:getVersionResponse" name="getVersionResponse">
-    </output>
-    </operation>
-  </portType>
-  <binding name="PatientInterchangeEndPointPortBinding" type="tns:PatientInterchangeEndPoint">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <operation name="sendPatient">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
-    <operation name="getPatient">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
-    <operation name="searchPatient">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
-    <operation name="getVersion">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
-  </binding>
-  <service name="PatientInterchangeEndPointService">
-    <port binding="tns:PatientInterchangeEndPointPortBinding" name="PatientInterchangeEndPointPort">
-      <soap:address location="https://med.tatar.ru/patients-smart-ws/patient"/>
-    </port>
-  </service>
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
+
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:tns="http://atria.cz/medical/integration/patient/api/" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:bi="http://atria.cz/common/base/info/build/" 
+             xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             name="PatientInterchangeEndPointService" 
+             targetNamespace="http://atria.cz/medical/integration/patient/api/">
+    <types>
+        <xsd:schema 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://atria.cz/medical/integration/patient/api/" 
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+            xmlns:bi="http://atria.cz/common/base/info/build/" 
+            xmlns="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import 
+                namespace="http://atria.cz/common/base/info/build/" 
+                schemaLocation="../xsd/buildInfo.xsd"/>
+        </xsd:schema>
+        <xsd:schema 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://atria.cz/medical/integration/patient/api/" 
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+            xmlns:bi="http://atria.cz/common/base/info/build/" 
+            xmlns="http://schemas.xmlsoap.org/wsdl/">
+            <xsd:import 
+                namespace="http://atria.cz/medical/integration/patient/" 
+                schemaLocation="../xsd/patients.xsd"/>
+        </xsd:schema>
+        <xsd:schema 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://atria.cz/medical/integration/patient/api/" 
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+            xmlns:bi="http://atria.cz/common/base/info/build/" 
+            xmlns="http://schemas.xmlsoap.org/wsdl/">            
+            <xsd:import 
+                namespace="http://atria.cz/medical/integration/patient/api/" 
+                schemaLocation="../xsd/patient_service.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="sendPatient">
+        <part element="tns:sendPatient" name="parameters">
+        </part>
+    </message>
+    <message name="getPatientResponse">
+        <part element="tns:getPatientResponse" name="parameters">
+        </part>
+    </message>
+    <message name="searchPatient">
+        <part element="tns:searchPatient" name="parameters">
+        </part>
+    </message>
+    <message name="searchPatientResponse">
+        <part element="tns:searchPatientResponse" name="parameters">
+        </part>
+    </message>
+    <message name="getVersionResponse">
+        <part element="bi:getVersionResponse" name="getVersionResponse">
+        </part>
+    </message>
+    <message name="getPatient">
+        <part element="tns:getPatient" name="parameters">
+        </part>
+    </message>
+    <message name="sendPatientResponse">
+        <part element="tns:sendPatientResponse" name="parameters">
+        </part>
+    </message>
+    <message name="getVersionRequest">
+        <part element="bi:getVersionRequest" name="getVersionRequest">
+        </part>
+    </message>
+    <portType name="PatientInterchangeEndPoint">
+        <operation name="sendPatient">
+            <input message="tns:sendPatient">
+            </input>
+            <output message="tns:sendPatientResponse">
+            </output>
+        </operation>
+        <operation name="getPatient">
+            <input message="tns:getPatient">
+            </input>
+            <output message="tns:getPatientResponse">
+            </output>
+        </operation>
+        <operation name="searchPatient">
+            <input message="tns:searchPatient">
+            </input>
+            <output message="tns:searchPatientResponse">
+            </output>
+        </operation>
+        <operation name="getVersion">
+            <input message="tns:getVersionRequest" name="getVersionRequest">
+            </input>
+            <output message="tns:getVersionResponse" name="getVersionResponse">
+            </output>
+        </operation>
+    </portType>
+    <binding name="PatientInterchangeEndPointPortBinding" type="tns:PatientInterchangeEndPoint">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="sendPatient">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getPatient">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="searchPatient">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getVersion">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="PatientInterchangeEndPointService">
+        <port binding="tns:PatientInterchangeEndPointPortBinding" name="PatientInterchangeEndPointPort">
+            <soap:address location="https://med.tatar.ru/patients-smart-ws/patient"/>
+        </port>
+    </service>
 </definitions>

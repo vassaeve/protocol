@@ -1,4 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/lsd/integration/medical/district/entity" elementFormDefault="qualified" targetNamespace="http://atria.cz/lsd/integration/medical/district/entity" version="1.0">
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:tns="http://atria.cz/lsd/integration/medical/district/entity" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://atria.cz/lsd/integration/medical/district/entity" 
+    version="1.0">
 
     <xs:element name="getDistrictRequest" type="xs:int"/>
     <xs:element name="getDistrictResponse" type="tns:xDistrict"/>

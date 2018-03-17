@@ -15,11 +15,10 @@
             xmlns:tns="http://cz.atria/patient/interchange/api/" 
             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
             xmlns:pat="http://cz.atria/patient/interchange/" 
-            xmlns:bi="http://atria.cz/common/base/info/build/" 
-            xmlns="http://schemas.xmlsoap.org/wsdl/" 
+            xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/" 
             targetNamespace="http://cz.atria/patient/interchange/api/">
             <xsd:import 
-                namespace="http://atria.cz/medical/integration/patient/" 
+                namespace="http://cz.atria/patient/interchange/" 
                 schemaLocation="../xsd/patients.xsd"/>
             <xsd:import 
                 namespace="http://atria.cz/common/base/info/build/" 

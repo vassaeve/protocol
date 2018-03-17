@@ -1,4 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://atria.cz/medical-cases/interchange" elementFormDefault="qualified" targetNamespace="http://atria.cz/medical-cases/interchange">
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
+<xsd:schema 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:typens="http://atria.cz/medical-cases/interchange" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://atria.cz/medical-cases/interchange">
     <xsd:complexType name="medicalCase">
         <xsd:annotation>
             <xsd:documentation>Объект учета "Случай обслуживания"</xsd:documentation>
@@ -151,9 +157,9 @@
                 </xsd:annotation>
             </xsd:element>
             <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredTeamNumber" type="xsd:string">
-            <xsd:annotation>
-                <xsd:documentation>Кем доcтавлен, номер наряда</xsd:documentation>
-            </xsd:annotation>
+                <xsd:annotation>
+                    <xsd:documentation>Кем доcтавлен, номер наряда</xsd:documentation>
+                </xsd:annotation>
             </xsd:element>
             <xsd:element maxOccurs="1" minOccurs="0" name="notesToWork" type="xsd:string">
                 <xsd:annotation>

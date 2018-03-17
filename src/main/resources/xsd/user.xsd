@@ -1,4 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/user/main" elementFormDefault="qualified" targetNamespace="http://atria.cz/user/main">
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://atria.cz/user/main" 
+            elementFormDefault="qualified" 
+            targetNamespace="http://atria.cz/user/main">
 
     <xsd:element name="getUsersRequest" type="tns:getUsersRequest"/>
     <xsd:element name="getUsersResponse" type="tns:getUsersResponse"/>

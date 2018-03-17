@@ -1,4 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://atria.cz/hospitalRecords/types" elementFormDefault="qualified" targetNamespace="http://atria.cz/hospitalRecords/types">
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
+<xsd:schema 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:typens="http://atria.cz/hospitalRecords/types" 
+            elementFormDefault="qualified" 
+            targetNamespace="http://atria.cz/hospitalRecords/types">
     <xsd:complexType name="hospitalRecord">
         <xsd:annotation>
             <xsd:documentation>Объект учета "Запись отделения госпитализации"</xsd:documentation>

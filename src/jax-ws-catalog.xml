@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/Users/vassaeve/NetBeansProjects/protocol/src/main/resources/wsdl/patients-ws.wsdl" uri="wsdl/patients-ws.wsdl"/>
+    <system systemId="file:/Users/vassaeve/NetBeansProjects/protocol/src/main/resources/xsd/patients.xsd" uri="xsd/patients.xsd"/>
+    <system systemId="file:/Users/vassaeve/NetBeansProjects/protocol/src/main/resources/xsd/buildInfo.xsd" uri="xsd/buildInfo.xsd"/>
+</catalog>
