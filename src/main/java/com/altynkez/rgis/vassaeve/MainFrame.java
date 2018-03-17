@@ -34,6 +34,8 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
      */
     public MainFrame() {
         initComponents();
+        
+        postInit();
     }
 
     /**
