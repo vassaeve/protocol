@@ -1,982 +1,979 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
-<definitions 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns:tns="http://cz.atria/patient/interchange/api/" 
-    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-    xmlns:pat="http://cz.atria/patient/interchange/" 
-    xmlns:bi="http://atria.cz/common/base/info/build/" 
-    xmlns="http://schemas.xmlsoap.org/wsdl/" 
-    name="PatientInterchangeEndPointService" 
-    targetNamespace="http://cz.atria/patient/interchange/api/">
-    <types>
-        <xsd:schema 
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-            xmlns:tns="http://cz.atria/patient/interchange/api/" 
-            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-            xmlns:pat="http://cz.atria/patient/interchange/" 
-            xmlns:bi="http://atria.cz/common/base/info/build/" 
-            xmlns="http://schemas.xmlsoap.org/wsdl/" 
-            targetNamespace="http://cz.atria/patient/interchange/api/">
-            <xsd:import 
-                namespace="http://atria.cz/medical/integration/patient/" 
-                schemaLocation="../xsd/patients.xsd"/>
-            <xsd:import 
-                namespace="http://atria.cz/common/base/info/build/" 
-                schemaLocation="../xsd/buildInfo.xsd"/>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://cz.atria/patient/interchange/api/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:pat="http://cz.atria/patient/interchange"
+                  xmlns:bi="http://atria.cz/common/base/info/build/"
+                  xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  name="PatientInterchangeEndPointService"
+                  targetNamespace="http://cz.atria/patient/interchange/api/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:tns="http://cz.atria/patient/interchange/api/"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:pat="http://cz.atria/patient/interchange"
+                    xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+                    targetNamespace="http://cz.atria/patient/interchange/api/">
+
+            <xsd:import namespace="http://cz.atria/patient/interchange" schemaLocation="../xsd/patients.xsd"/>
+
+            <xsd:import namespace="http://atria.cz/common/base/info/build/" schemaLocation="../xsd/buildInfo.xsd"/>
+
         </xsd:schema>
-    </types>
-    <message name="editPatientBenefitRequest">
-        <part element="pat:editPatientBenefitRequest" name="request">
-        </part>
-    </message>
-    <message name="editPatientBenefitResponse">
-        <part element="pat:editPatientBenefitResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientContactRequest">
-        <part element="pat:editPatientContactRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientRelationResponse">
-        <part element="pat:getPatientRelationResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientRequest">
-        <part element="pat:getPatientRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientBenefitRequest">
-        <part element="pat:getPatientBenefitRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientContactRequest">
-        <part element="pat:getPatientContactRequest" name="request">
-        </part>
-    </message>
-    <message name="editDrugIntoleranceRequest">
-        <part element="pat:editDrugIntoleranceRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientBenefitResponse">
-        <part element="pat:getPatientBenefitResponse" name="response">
-        </part>
-    </message>
-    <message name="deletePatientBenefitRequest">
-        <part element="pat:deletePatientBenefitRequest" name="request">
-        </part>
-    </message>
-    <message name="editPatientRegRequest">
-        <part element="pat:editPatientRegRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientRelationResponse">
-        <part element="pat:createPatientRelationResponse" name="response">
-        </part>
-    </message>
-    <message name="createPartCaseRequest">
-        <part element="pat:createPartCaseRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientBenefitsResponse">
-        <part element="pat:getPatientBenefitsResponse" name="response">
-        </part>
-    </message>
-    <message name="getVersionResponse">
-        <part element="bi:getVersionResponse" name="getVersionResponse">
-        </part>
-    </message>
-    <message name="getPatientWorkplacesRequest">
-        <part element="pat:getPatientWorkplacesRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientWorkplacesResponse">
-        <part element="pat:getPatientWorkplacesResponse" name="response">
-        </part>
-    </message>
-    <message name="editPartCaseRequest">
-        <part element="pat:editPartCaseRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientPartCasesResponse">
-        <part element="pat:getPatientPartCasesResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientResponse">
-        <part element="pat:editPatientResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientPartCasesRequest">
-        <part element="pat:getPatientPartCasesRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePatientContactRequest">
-        <part element="pat:deletePatientContactRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientBenefitRequest">
-        <part element="pat:createPatientBenefitRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientRequest">
-        <part element="pat:createPatientRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePatientWorkplaceRequest">
-        <part element="pat:deletePatientWorkplaceRequest" name="request">
-        </part>
-    </message>
-    <message name="createDrugIntoleranceRequest">
-        <part element="pat:createDrugIntoleranceRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientBenefitsRequest">
-        <part element="pat:getPatientBenefitsRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientContactsResponse">
-        <part element="pat:getPatientContactsResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientRegResponse">
-        <part element="pat:getPatientRegResponse" name="response">
-        </part>
-    </message>
-    <message name="deletePatientRelationRequest">
-        <part element="pat:deletePatientRelationRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientBenefitResponse">
-        <part element="pat:createPatientBenefitResponse" name="response">
-        </part>
-    </message>
-    <message name="createPatientContactRequest">
-        <part element="pat:createPatientContactRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientRegResponse">
-        <part element="pat:createPatientRegResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientWorkplaceRequest">
-        <part element="pat:editPatientWorkplaceRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePartCaseRequest">
-        <part element="pat:deletePartCaseRequest" name="request">
-        </part>
-    </message>
-    <message name="getDrugIntoleranceRequest">
-        <part element="pat:getDrugIntoleranceRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientRegRequest">
-        <part element="pat:getPatientRegRequest" name="request">
-        </part>
-    </message>
-    <message name="getVersionRequest">
-        <part element="bi:getVersionRequest" name="getVersionRequest">
-        </part>
-    </message>
-    <message name="deletePatientResponse">
-        <part element="pat:deletePatientResponse" name="response">
-        </part>
-    </message>
-    <message name="deletePatientWorkplaceResponse">
-        <part element="pat:deletePatientWorkplaceResponse" name="response">
-        </part>
-    </message>
-    <message name="createPatientWorkplaceRequest">
-        <part element="pat:createPatientWorkplaceRequest" name="request">
-        </part>
-    </message>
-    <message name="searchPatientRequest">
-        <part element="pat:searchPatientRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePatientRegRequest">
-        <part element="pat:deletePatientRegRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePatientContactResponse">
-        <part element="pat:deletePatientContactResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientWorkplaceRequest">
-        <part element="pat:getPatientWorkplaceRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientRegsRequest">
-        <part element="pat:getPatientRegsRequest" name="request">
-        </part>
-    </message>
-    <message name="createDrugIntoleranceResponse">
-        <part element="pat:createDrugIntoleranceResponse" name="response">
-        </part>
-    </message>
-    <message name="deletePatientRequest">
-        <part element="pat:deletePatientRequest" name="request">
-        </part>
-    </message>
-    <message name="editPartCaseResponse">
-        <part element="pat:editPartCaseResponse" name="response">
-        </part>
-    </message>
-    <message name="getDrugIntoleranceResponse">
-        <part element="pat:getDrugIntoleranceResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientContactResponse">
-        <part element="pat:getPatientContactResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientRelationRequest">
-        <part element="pat:getPatientRelationRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientRegRequest">
-        <part element="pat:createPatientRegRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePatientRegResponse">
-        <part element="pat:deletePatientRegResponse" name="response">
-        </part>
-    </message>
-    <message name="createPatientWorkplaceResponse">
-        <part element="pat:createPatientWorkplaceResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientRelationsResponse">
-        <part element="pat:getPatientRelationsResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientRegResponse">
-        <part element="pat:editPatientRegResponse" name="response">
-        </part>
-    </message>
-    <message name="getPartCaseRequest">
-        <part element="pat:getPartCaseRequest" name="request">
-        </part>
-    </message>
-    <message name="getDrugIntolerancesResponse">
-        <part element="pat:getDrugIntolerancesResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientWorkplaceResponse">
-        <part element="pat:getPatientWorkplaceResponse" name="response">
-        </part>
-    </message>
-    <message name="searchPatientResponse">
-        <part element="pat:searchPatientResponse" name="response">
-        </part>
-    </message>
-    <message name="createPatientRelationRequest">
-        <part element="pat:createPatientRelationRequest" name="request">
-        </part>
-    </message>
-    <message name="editPatientRelationResponse">
-        <part element="pat:editPatientRelationResponse" name="response">
-        </part>
-    </message>
-    <message name="createPartCaseResponse">
-        <part element="pat:createPartCaseResponse" name="response">
-        </part>
-    </message>
-    <message name="getDrugIntolerancesRequest">
-        <part element="pat:getDrugIntolerancesRequest" name="request">
-        </part>
-    </message>
-    <message name="getPatientRelationsRequest">
-        <part element="pat:getPatientRelationsRequest" name="request">
-        </part>
-    </message>
-    <message name="editPatientRequest">
-        <part element="pat:editPatientRequest" name="request">
-        </part>
-    </message>
-    <message name="deleteDrugIntoleranceResponse">
-        <part element="pat:deleteDrugIntoleranceResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientContactsRequest">
-        <part element="pat:getPatientContactsRequest" name="request">
-        </part>
-    </message>
-    <message name="deletePatientRelationResponse">
-        <part element="pat:deletePatientRelationResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientRegsResponse">
-        <part element="pat:getPatientRegsResponse" name="response">
-        </part>
-    </message>
-    <message name="editDrugIntoleranceResponse">
-        <part element="pat:editDrugIntoleranceResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientWorkplaceResponse">
-        <part element="pat:editPatientWorkplaceResponse" name="response">
-        </part>
-    </message>
-    <message name="deletePartCaseResponse">
-        <part element="pat:deletePartCaseResponse" name="response">
-        </part>
-    </message>
-    <message name="deletePatientBenefitResponse">
-        <part element="pat:deletePatientBenefitResponse" name="response">
-        </part>
-    </message>
-    <message name="getPatientResponse">
-        <part element="pat:getPatientResponse" name="response">
-        </part>
-    </message>
-    <message name="getPartCaseResponse">
-        <part element="pat:getPartCaseResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientContactResponse">
-        <part element="pat:editPatientContactResponse" name="response">
-        </part>
-    </message>
-    <message name="editPatientRelationRequest">
-        <part element="pat:editPatientRelationRequest" name="request">
-        </part>
-    </message>
-    <message name="createPatientContactResponse">
-        <part element="pat:createPatientContactResponse" name="response">
-        </part>
-    </message>
-    <message name="createPatientResponse">
-        <part element="pat:createPatientResponse" name="response">
-        </part>
-    </message>
-    <message name="deleteDrugIntoleranceRequest">
-        <part element="pat:deleteDrugIntoleranceRequest" name="request">
-        </part>
-    </message>
+    </wsdl:types>
+    <wsdl:message name="editPatientBenefitRequest">
+        <wsdl:part element="pat:editPatientBenefitRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientBenefitResponse">
+        <wsdl:part element="pat:editPatientBenefitResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientContactRequest">
+        <wsdl:part element="pat:editPatientContactRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRelationResponse">
+        <wsdl:part element="pat:getPatientRelationResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRequest">
+        <wsdl:part element="pat:getPatientRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientBenefitRequest">
+        <wsdl:part element="pat:getPatientBenefitRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientContactRequest">
+        <wsdl:part element="pat:getPatientContactRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editDrugIntoleranceRequest">
+        <wsdl:part element="pat:editDrugIntoleranceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientBenefitResponse">
+        <wsdl:part element="pat:getPatientBenefitResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientBenefitRequest">
+        <wsdl:part element="pat:deletePatientBenefitRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientRegRequest">
+        <wsdl:part element="pat:editPatientRegRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientRelationResponse">
+        <wsdl:part element="pat:createPatientRelationResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPartCaseRequest">
+        <wsdl:part element="pat:createPartCaseRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientBenefitsResponse">
+        <wsdl:part element="pat:getPatientBenefitsResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getVersionResponse">
+        <wsdl:part element="bi:getVersionResponse" name="getVersionResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientWorkplacesRequest">
+        <wsdl:part element="pat:getPatientWorkplacesRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientWorkplacesResponse">
+        <wsdl:part element="pat:getPatientWorkplacesResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPartCaseRequest">
+        <wsdl:part element="pat:editPartCaseRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientPartCasesResponse">
+        <wsdl:part element="pat:getPatientPartCasesResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientResponse">
+        <wsdl:part element="pat:editPatientResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientPartCasesRequest">
+        <wsdl:part element="pat:getPatientPartCasesRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientContactRequest">
+        <wsdl:part element="pat:deletePatientContactRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientBenefitRequest">
+        <wsdl:part element="pat:createPatientBenefitRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientRequest">
+        <wsdl:part element="pat:createPatientRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientWorkplaceRequest">
+        <wsdl:part element="pat:deletePatientWorkplaceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createDrugIntoleranceRequest">
+        <wsdl:part element="pat:createDrugIntoleranceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientBenefitsRequest">
+        <wsdl:part element="pat:getPatientBenefitsRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientContactsResponse">
+        <wsdl:part element="pat:getPatientContactsResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRegResponse">
+        <wsdl:part element="pat:getPatientRegResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientRelationRequest">
+        <wsdl:part element="pat:deletePatientRelationRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientBenefitResponse">
+        <wsdl:part element="pat:createPatientBenefitResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientContactRequest">
+        <wsdl:part element="pat:createPatientContactRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientRegResponse">
+        <wsdl:part element="pat:createPatientRegResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientWorkplaceRequest">
+        <wsdl:part element="pat:editPatientWorkplaceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePartCaseRequest">
+        <wsdl:part element="pat:deletePartCaseRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDrugIntoleranceRequest">
+        <wsdl:part element="pat:getDrugIntoleranceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRegRequest">
+        <wsdl:part element="pat:getPatientRegRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getVersionRequest">
+        <wsdl:part element="bi:getVersionRequest" name="getVersionRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientResponse">
+        <wsdl:part element="pat:deletePatientResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientWorkplaceResponse">
+        <wsdl:part element="pat:deletePatientWorkplaceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientWorkplaceRequest">
+        <wsdl:part element="pat:createPatientWorkplaceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="searchPatientRequest">
+        <wsdl:part element="pat:searchPatientRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientRegRequest">
+        <wsdl:part element="pat:deletePatientRegRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientContactResponse">
+        <wsdl:part element="pat:deletePatientContactResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientWorkplaceRequest">
+        <wsdl:part element="pat:getPatientWorkplaceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRegsRequest">
+        <wsdl:part element="pat:getPatientRegsRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createDrugIntoleranceResponse">
+        <wsdl:part element="pat:createDrugIntoleranceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientRequest">
+        <wsdl:part element="pat:deletePatientRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPartCaseResponse">
+        <wsdl:part element="pat:editPartCaseResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDrugIntoleranceResponse">
+        <wsdl:part element="pat:getDrugIntoleranceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientContactResponse">
+        <wsdl:part element="pat:getPatientContactResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRelationRequest">
+        <wsdl:part element="pat:getPatientRelationRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientRegRequest">
+        <wsdl:part element="pat:createPatientRegRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientRegResponse">
+        <wsdl:part element="pat:deletePatientRegResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientWorkplaceResponse">
+        <wsdl:part element="pat:createPatientWorkplaceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRelationsResponse">
+        <wsdl:part element="pat:getPatientRelationsResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientRegResponse">
+        <wsdl:part element="pat:editPatientRegResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPartCaseRequest">
+        <wsdl:part element="pat:getPartCaseRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDrugIntolerancesResponse">
+        <wsdl:part element="pat:getDrugIntolerancesResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientWorkplaceResponse">
+        <wsdl:part element="pat:getPatientWorkplaceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="searchPatientResponse">
+        <wsdl:part element="pat:searchPatientResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientRelationRequest">
+        <wsdl:part element="pat:createPatientRelationRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientRelationResponse">
+        <wsdl:part element="pat:editPatientRelationResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPartCaseResponse">
+        <wsdl:part element="pat:createPartCaseResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getDrugIntolerancesRequest">
+        <wsdl:part element="pat:getDrugIntolerancesRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRelationsRequest">
+        <wsdl:part element="pat:getPatientRelationsRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientRequest">
+        <wsdl:part element="pat:editPatientRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteDrugIntoleranceResponse">
+        <wsdl:part element="pat:deleteDrugIntoleranceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientContactsRequest">
+        <wsdl:part element="pat:getPatientContactsRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientRelationResponse">
+        <wsdl:part element="pat:deletePatientRelationResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientRegsResponse">
+        <wsdl:part element="pat:getPatientRegsResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editDrugIntoleranceResponse">
+        <wsdl:part element="pat:editDrugIntoleranceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientWorkplaceResponse">
+        <wsdl:part element="pat:editPatientWorkplaceResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePartCaseResponse">
+        <wsdl:part element="pat:deletePartCaseResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deletePatientBenefitResponse">
+        <wsdl:part element="pat:deletePatientBenefitResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPatientResponse">
+        <wsdl:part element="pat:getPatientResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getPartCaseResponse">
+        <wsdl:part element="pat:getPartCaseResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientContactResponse">
+        <wsdl:part element="pat:editPatientContactResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="editPatientRelationRequest">
+        <wsdl:part element="pat:editPatientRelationRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientContactResponse">
+        <wsdl:part element="pat:createPatientContactResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createPatientResponse">
+        <wsdl:part element="pat:createPatientResponse" name="response">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteDrugIntoleranceRequest">
+        <wsdl:part element="pat:deleteDrugIntoleranceRequest" name="request">
+        </wsdl:part>
+    </wsdl:message>
     <portType name="PatientInterchangeEndPoint">
-        <operation name="createPatient">
-            <input message="tns:createPatientRequest" name="createPatientRequest">
-            </input>
-            <output message="tns:createPatientResponse" name="createPatientResponse">
-            </output>
-        </operation>
-        <operation name="editPatient">
-            <input message="tns:editPatientRequest" name="editPatientRequest">
-            </input>
-            <output message="tns:editPatientResponse" name="editPatientResponse">
-            </output>
-        </operation>
-        <operation name="deletePatient">
-            <input message="tns:deletePatientRequest" name="deletePatientRequest">
-            </input>
-            <output message="tns:deletePatientResponse" name="deletePatientResponse">
-            </output>
-        </operation>
-        <operation name="getPatient">
-            <input message="tns:getPatientRequest" name="getPatientRequest">
-            </input>
-            <output message="tns:getPatientResponse" name="getPatientResponse">
-            </output>
-        </operation>
-        <operation name="searchPatient">
-            <input message="tns:searchPatientRequest" name="searchPatientRequest">
-            </input>
-            <output message="tns:searchPatientResponse" name="searchPatientResponse">
-            </output>
-        </operation>
-        <operation name="getPatientPartCases">
-            <input message="tns:getPatientPartCasesRequest" name="getPatientPartCasesRequest">
-            </input>
-            <output message="tns:getPatientPartCasesResponse" name="getPatientPartCasesResponse">
-            </output>
-        </operation>
-        <operation name="getPartCase">
-            <input message="tns:getPartCaseRequest" name="getPartCaseRequest">
-            </input>
-            <output message="tns:getPartCaseResponse" name="getPartCaseResponse">
-            </output>
-        </operation>
-        <operation name="createPartCase">
-            <input message="tns:createPartCaseRequest" name="createPartCaseRequest">
-            </input>
-            <output message="tns:createPartCaseResponse" name="createPartCaseResponse">
-            </output>
-        </operation>
-        <operation name="editPartCase">
-            <input message="tns:editPartCaseRequest" name="editPartCaseRequest">
-            </input>
-            <output message="tns:editPartCaseResponse" name="editPartCaseResponse">
-            </output>
-        </operation>
-        <operation name="deletePartCase">
-            <input message="tns:deletePartCaseRequest" name="deletePartCaseRequest">
-            </input>
-            <output message="tns:deletePartCaseResponse" name="deletePartCaseResponse">
-            </output>
-        </operation>
-        <operation name="getPatientRegs">
-            <input message="tns:getPatientRegsRequest" name="getPatientRegsRequest">
-            </input>
-            <output message="tns:getPatientRegsResponse" name="getPatientRegsResponse">
-            </output>
-        </operation>
-        <operation name="getPatientReg">
-            <input message="tns:getPatientRegRequest" name="getPatientRegRequest">
-            </input>
-            <output message="tns:getPatientRegResponse" name="getPatientRegResponse">
-            </output>
-        </operation>
-        <operation name="createPatientReg">
-            <input message="tns:createPatientRegRequest" name="createPatientRegRequest">
-            </input>
-            <output message="tns:createPatientRegResponse" name="createPatientRegResponse">
-            </output>
-        </operation>
-        <operation name="editPatientReg">
-            <input message="tns:editPatientRegRequest" name="editPatientRegRequest">
-            </input>
-            <output message="tns:editPatientRegResponse" name="editPatientRegResponse">
-            </output>
-        </operation>
-        <operation name="deletePatientReg">
-            <input message="tns:deletePatientRegRequest" name="deletePatientRegRequest">
-            </input>
-            <output message="tns:deletePatientRegResponse" name="deletePatientRegResponse">
-            </output>
-        </operation>
-        <operation name="getPatientBenefits">
-            <input message="tns:getPatientBenefitsRequest" name="getPatientBenefitsRequest">
-            </input>
-            <output message="tns:getPatientBenefitsResponse" name="getPatientBenefitsResponse">
-            </output>
-        </operation>
-        <operation name="getPatientBenefit">
-            <input message="tns:getPatientBenefitRequest" name="getPatientBenefitRequest">
-            </input>
-            <output message="tns:getPatientBenefitResponse" name="getPatientBenefitResponse">
-            </output>
-        </operation>
-        <operation name="createPatientBenefit">
-            <input message="tns:createPatientBenefitRequest" name="createPatientBenefitRequest">
-            </input>
-            <output message="tns:createPatientBenefitResponse" name="createPatientBenefitResponse">
-            </output>
-        </operation>
-        <operation name="editPatientBenefit">
-            <input message="tns:editPatientBenefitRequest" name="editPatientBenefitRequest">
-            </input>
-            <output message="tns:editPatientBenefitResponse" name="editPatientBenefitResponse">
-            </output>
-        </operation>
-        <operation name="deletePatientBenefit">
-            <input message="tns:deletePatientBenefitRequest" name="deletePatientBenefitRequest">
-            </input>
-            <output message="tns:deletePatientBenefitResponse" name="deletePatientBenefitResponse">
-            </output>
-        </operation>
-        <operation name="getDrugIntolerances">
-            <input message="tns:getDrugIntolerancesRequest" name="getDrugIntolerancesRequest">
-            </input>
-            <output message="tns:getDrugIntolerancesResponse" name="getDrugIntolerancesResponse">
-            </output>
-        </operation>
-        <operation name="getDrugIntolerance">
-            <input message="tns:getDrugIntoleranceRequest" name="getDrugIntoleranceRequest">
-            </input>
-            <output message="tns:getDrugIntoleranceResponse" name="getDrugIntoleranceResponse">
-            </output>
-        </operation>
-        <operation name="createDrugIntolerance">
-            <input message="tns:createDrugIntoleranceRequest" name="createDrugIntoleranceRequest">
-            </input>
-            <output message="tns:createDrugIntoleranceResponse" name="createDrugIntoleranceResponse">
-            </output>
-        </operation>
-        <operation name="editDrugIntolerance">
-            <input message="tns:editDrugIntoleranceRequest" name="editDrugIntoleranceRequest">
-            </input>
-            <output message="tns:editDrugIntoleranceResponse" name="editDrugIntoleranceResponse">
-            </output>
-        </operation>
-        <operation name="deleteDrugIntolerance">
-            <input message="tns:deleteDrugIntoleranceRequest" name="deleteDrugIntoleranceRequest">
-            </input>
-            <output message="tns:deleteDrugIntoleranceResponse" name="deleteDrugIntoleranceResponse">
-            </output>
-        </operation>
-        <operation name="getPatientContacts">
-            <input message="tns:getPatientContactsRequest" name="getPatientContactsRequest">
-            </input>
-            <output message="tns:getPatientContactsResponse" name="getPatientContactsResponse">
-            </output>
-        </operation>
-        <operation name="getPatientContact">
-            <input message="tns:getPatientContactRequest" name="getPatientContactRequest">
-            </input>
-            <output message="tns:getPatientContactResponse" name="getPatientContactResponse">
-            </output>
-        </operation>
-        <operation name="createPatientContact">
-            <input message="tns:createPatientContactRequest" name="createPatientContactRequest">
-            </input>
-            <output message="tns:createPatientContactResponse" name="createPatientContactResponse">
-            </output>
-        </operation>
-        <operation name="editPatientContact">
-            <input message="tns:editPatientContactRequest" name="editPatientContactRequest">
-            </input>
-            <output message="tns:editPatientContactResponse" name="editPatientContactResponse">
-            </output>
-        </operation>
-        <operation name="deletePatientContact">
-            <input message="tns:deletePatientContactRequest" name="deletePatientContactRequest">
-            </input>
-            <output message="tns:deletePatientContactResponse" name="deletePatientContactResponse">
-            </output>
-        </operation>
-        <operation name="getPatientWorkplaces">
-            <input message="tns:getPatientWorkplacesRequest" name="getPatientWorkplacesRequest">
-            </input>
-            <output message="tns:getPatientWorkplacesResponse" name="getPatientWorkplacesResponse">
-            </output>
-        </operation>
-        <operation name="getPatientWorkplace">
-            <input message="tns:getPatientWorkplaceRequest" name="getPatientWorkplaceRequest">
-            </input>
-            <output message="tns:getPatientWorkplaceResponse" name="getPatientWorkplaceResponse">
-            </output>
-        </operation>
-        <operation name="createPatientWorkplace">
-            <input message="tns:createPatientWorkplaceRequest" name="createPatientWorkplaceRequest">
-            </input>
-            <output message="tns:createPatientWorkplaceResponse" name="createPatientWorkplaceResponse">
-            </output>
-        </operation>
-        <operation name="editPatientWorkplace">
-            <input message="tns:editPatientWorkplaceRequest" name="editPatientWorkplaceRequest">
-            </input>
-            <output message="tns:editPatientWorkplaceResponse" name="editPatientWorkplaceResponse">
-            </output>
-        </operation>
-        <operation name="deletePatientWorkplace">
-            <input message="tns:deletePatientWorkplaceRequest" name="deletePatientWorkplaceRequest">
-            </input>
-            <output message="tns:deletePatientWorkplaceResponse" name="deletePatientWorkplaceResponse">
-            </output>
-        </operation>
-        <operation name="getPatientRelations">
-            <input message="tns:getPatientRelationsRequest" name="getPatientRelationsRequest">
-            </input>
-            <output message="tns:getPatientRelationsResponse" name="getPatientRelationsResponse">
-            </output>
-        </operation>
-        <operation name="getPatientRelation">
-            <input message="tns:getPatientRelationRequest" name="getPatientRelationRequest">
-            </input>
-            <output message="tns:getPatientRelationResponse" name="getPatientRelationResponse">
-            </output>
-        </operation>
-        <operation name="createPatientRelation">
-            <input message="tns:createPatientRelationRequest" name="createPatientRelationRequest">
-            </input>
-            <output message="tns:createPatientRelationResponse" name="createPatientRelationResponse">
-            </output>
-        </operation>
-        <operation name="editPatientRelation">
-            <input message="tns:editPatientRelationRequest" name="editPatientRelationRequest">
-            </input>
-            <output message="tns:editPatientRelationResponse" name="editPatientRelationResponse">
-            </output>
-        </operation>
-        <operation name="deletePatientRelation">
-            <input message="tns:deletePatientRelationRequest" name="deletePatientRelationRequest">
-            </input>
-            <output message="tns:deletePatientRelationResponse" name="deletePatientRelationResponse">
-            </output>
-        </operation>
-        <operation name="getVersion">
-            <input message="tns:getVersionRequest" name="getVersionRequest">
-            </input>
-            <output message="tns:getVersionResponse" name="getVersionResponse">
-            </output>
-        </operation>
+        <wsdl:operation name="createPatient">
+            <wsdl:input message="tns:createPatientRequest" name="createPatientRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPatientResponse" name="createPatientResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatient">
+            <wsdl:input message="tns:editPatientRequest" name="editPatientRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPatientResponse" name="editPatientResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatient">
+            <wsdl:input message="tns:deletePatientRequest" name="deletePatientRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePatientResponse" name="deletePatientResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatient">
+            <wsdl:input message="tns:getPatientRequest" name="getPatientRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientResponse" name="getPatientResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchPatient">
+            <wsdl:input message="tns:searchPatientRequest" name="searchPatientRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:searchPatientResponse" name="searchPatientResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientPartCases">
+            <wsdl:input message="tns:getPatientPartCasesRequest" name="getPatientPartCasesRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientPartCasesResponse" name="getPatientPartCasesResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPartCase">
+            <wsdl:input message="tns:getPartCaseRequest" name="getPartCaseRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPartCaseResponse" name="getPartCaseResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPartCase">
+            <wsdl:input message="tns:createPartCaseRequest" name="createPartCaseRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPartCaseResponse" name="createPartCaseResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPartCase">
+            <wsdl:input message="tns:editPartCaseRequest" name="editPartCaseRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPartCaseResponse" name="editPartCaseResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePartCase">
+            <wsdl:input message="tns:deletePartCaseRequest" name="deletePartCaseRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePartCaseResponse" name="deletePartCaseResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientRegs">
+            <wsdl:input message="tns:getPatientRegsRequest" name="getPatientRegsRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientRegsResponse" name="getPatientRegsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientReg">
+            <wsdl:input message="tns:getPatientRegRequest" name="getPatientRegRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientRegResponse" name="getPatientRegResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientReg">
+            <wsdl:input message="tns:createPatientRegRequest" name="createPatientRegRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPatientRegResponse" name="createPatientRegResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientReg">
+            <wsdl:input message="tns:editPatientRegRequest" name="editPatientRegRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPatientRegResponse" name="editPatientRegResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientReg">
+            <wsdl:input message="tns:deletePatientRegRequest" name="deletePatientRegRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePatientRegResponse" name="deletePatientRegResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientBenefits">
+            <wsdl:input message="tns:getPatientBenefitsRequest" name="getPatientBenefitsRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientBenefitsResponse" name="getPatientBenefitsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientBenefit">
+            <wsdl:input message="tns:getPatientBenefitRequest" name="getPatientBenefitRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientBenefitResponse" name="getPatientBenefitResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientBenefit">
+            <wsdl:input message="tns:createPatientBenefitRequest" name="createPatientBenefitRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPatientBenefitResponse" name="createPatientBenefitResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientBenefit">
+            <wsdl:input message="tns:editPatientBenefitRequest" name="editPatientBenefitRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPatientBenefitResponse" name="editPatientBenefitResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientBenefit">
+            <wsdl:input message="tns:deletePatientBenefitRequest" name="deletePatientBenefitRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePatientBenefitResponse" name="deletePatientBenefitResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDrugIntolerances">
+            <wsdl:input message="tns:getDrugIntolerancesRequest" name="getDrugIntolerancesRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getDrugIntolerancesResponse" name="getDrugIntolerancesResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDrugIntolerance">
+            <wsdl:input message="tns:getDrugIntoleranceRequest" name="getDrugIntoleranceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getDrugIntoleranceResponse" name="getDrugIntoleranceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createDrugIntolerance">
+            <wsdl:input message="tns:createDrugIntoleranceRequest" name="createDrugIntoleranceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createDrugIntoleranceResponse" name="createDrugIntoleranceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDrugIntolerance">
+            <wsdl:input message="tns:editDrugIntoleranceRequest" name="editDrugIntoleranceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editDrugIntoleranceResponse" name="editDrugIntoleranceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDrugIntolerance">
+            <wsdl:input message="tns:deleteDrugIntoleranceRequest" name="deleteDrugIntoleranceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deleteDrugIntoleranceResponse" name="deleteDrugIntoleranceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientContacts">
+            <wsdl:input message="tns:getPatientContactsRequest" name="getPatientContactsRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientContactsResponse" name="getPatientContactsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientContact">
+            <wsdl:input message="tns:getPatientContactRequest" name="getPatientContactRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientContactResponse" name="getPatientContactResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientContact">
+            <wsdl:input message="tns:createPatientContactRequest" name="createPatientContactRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPatientContactResponse" name="createPatientContactResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientContact">
+            <wsdl:input message="tns:editPatientContactRequest" name="editPatientContactRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPatientContactResponse" name="editPatientContactResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientContact">
+            <wsdl:input message="tns:deletePatientContactRequest" name="deletePatientContactRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePatientContactResponse" name="deletePatientContactResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientWorkplaces">
+            <wsdl:input message="tns:getPatientWorkplacesRequest" name="getPatientWorkplacesRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientWorkplacesResponse" name="getPatientWorkplacesResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientWorkplace">
+            <wsdl:input message="tns:getPatientWorkplaceRequest" name="getPatientWorkplaceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientWorkplaceResponse" name="getPatientWorkplaceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientWorkplace">
+            <wsdl:input message="tns:createPatientWorkplaceRequest" name="createPatientWorkplaceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPatientWorkplaceResponse" name="createPatientWorkplaceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientWorkplace">
+            <wsdl:input message="tns:editPatientWorkplaceRequest" name="editPatientWorkplaceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPatientWorkplaceResponse" name="editPatientWorkplaceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientWorkplace">
+            <wsdl:input message="tns:deletePatientWorkplaceRequest" name="deletePatientWorkplaceRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePatientWorkplaceResponse" name="deletePatientWorkplaceResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientRelations">
+            <wsdl:input message="tns:getPatientRelationsRequest" name="getPatientRelationsRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientRelationsResponse" name="getPatientRelationsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientRelation">
+            <wsdl:input message="tns:getPatientRelationRequest" name="getPatientRelationRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getPatientRelationResponse" name="getPatientRelationResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientRelation">
+            <wsdl:input message="tns:createPatientRelationRequest" name="createPatientRelationRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:createPatientRelationResponse" name="createPatientRelationResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientRelation">
+            <wsdl:input message="tns:editPatientRelationRequest" name="editPatientRelationRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:editPatientRelationResponse" name="editPatientRelationResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientRelation">
+            <wsdl:input message="tns:deletePatientRelationRequest" name="deletePatientRelationRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:deletePatientRelationResponse" name="deletePatientRelationResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVersion">
+            <wsdl:input message="tns:getVersionRequest" name="getVersionRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:getVersionResponse" name="getVersionResponse">
+            </wsdl:output>
+        </wsdl:operation>
     </portType>
     <binding name="PatientInterchangeEndPointBinding" type="tns:PatientInterchangeEndPoint">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="createPatient">
+        <wsdl:operation name="createPatient">
             <soap:operation soapAction=""/>
-            <input name="createPatientRequest">
+            <wsdl:input name="createPatientRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPatientResponse">
+            </wsdl:input>
+            <wsdl:output name="createPatientResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPatient">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatient">
             <soap:operation soapAction=""/>
-            <input name="editPatientRequest">
+            <wsdl:input name="editPatientRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPatientResponse">
+            </wsdl:input>
+            <wsdl:output name="editPatientResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePatient">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatient">
             <soap:operation soapAction=""/>
-            <input name="deletePatientRequest">
+            <wsdl:input name="deletePatientRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePatientResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePatientResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatient">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatient">
             <soap:operation soapAction=""/>
-            <input name="getPatientRequest">
+            <wsdl:input name="getPatientRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="searchPatient">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchPatient">
             <soap:operation soapAction=""/>
-            <input name="searchPatientRequest">
+            <wsdl:input name="searchPatientRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="searchPatientResponse">
+            </wsdl:input>
+            <wsdl:output name="searchPatientResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientPartCases">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientPartCases">
             <soap:operation soapAction=""/>
-            <input name="getPatientPartCasesRequest">
+            <wsdl:input name="getPatientPartCasesRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientPartCasesResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientPartCasesResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPartCase">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPartCase">
             <soap:operation soapAction=""/>
-            <input name="getPartCaseRequest">
+            <wsdl:input name="getPartCaseRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPartCaseResponse">
+            </wsdl:input>
+            <wsdl:output name="getPartCaseResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createPartCase">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPartCase">
             <soap:operation soapAction=""/>
-            <input name="createPartCaseRequest">
+            <wsdl:input name="createPartCaseRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPartCaseResponse">
+            </wsdl:input>
+            <wsdl:output name="createPartCaseResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPartCase">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPartCase">
             <soap:operation soapAction=""/>
-            <input name="editPartCaseRequest">
+            <wsdl:input name="editPartCaseRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPartCaseResponse">
+            </wsdl:input>
+            <wsdl:output name="editPartCaseResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePartCase">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePartCase">
             <soap:operation soapAction=""/>
-            <input name="deletePartCaseRequest">
+            <wsdl:input name="deletePartCaseRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePartCaseResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePartCaseResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientRegs">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientRegs">
             <soap:operation soapAction=""/>
-            <input name="getPatientRegsRequest">
+            <wsdl:input name="getPatientRegsRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientRegsResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientRegsResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientReg">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientReg">
             <soap:operation soapAction=""/>
-            <input name="getPatientRegRequest">
+            <wsdl:input name="getPatientRegRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientRegResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientRegResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createPatientReg">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientReg">
             <soap:operation soapAction=""/>
-            <input name="createPatientRegRequest">
+            <wsdl:input name="createPatientRegRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPatientRegResponse">
+            </wsdl:input>
+            <wsdl:output name="createPatientRegResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPatientReg">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientReg">
             <soap:operation soapAction=""/>
-            <input name="editPatientRegRequest">
+            <wsdl:input name="editPatientRegRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPatientRegResponse">
+            </wsdl:input>
+            <wsdl:output name="editPatientRegResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePatientReg">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientReg">
             <soap:operation soapAction=""/>
-            <input name="deletePatientRegRequest">
+            <wsdl:input name="deletePatientRegRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePatientRegResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePatientRegResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientBenefits">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientBenefits">
             <soap:operation soapAction=""/>
-            <input name="getPatientBenefitsRequest">
+            <wsdl:input name="getPatientBenefitsRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientBenefitsResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientBenefitsResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientBenefit">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientBenefit">
             <soap:operation soapAction=""/>
-            <input name="getPatientBenefitRequest">
+            <wsdl:input name="getPatientBenefitRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientBenefitResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientBenefitResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createPatientBenefit">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientBenefit">
             <soap:operation soapAction=""/>
-            <input name="createPatientBenefitRequest">
+            <wsdl:input name="createPatientBenefitRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPatientBenefitResponse">
+            </wsdl:input>
+            <wsdl:output name="createPatientBenefitResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPatientBenefit">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientBenefit">
             <soap:operation soapAction=""/>
-            <input name="editPatientBenefitRequest">
+            <wsdl:input name="editPatientBenefitRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPatientBenefitResponse">
+            </wsdl:input>
+            <wsdl:output name="editPatientBenefitResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePatientBenefit">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientBenefit">
             <soap:operation soapAction=""/>
-            <input name="deletePatientBenefitRequest">
+            <wsdl:input name="deletePatientBenefitRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePatientBenefitResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePatientBenefitResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getDrugIntolerances">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDrugIntolerances">
             <soap:operation soapAction=""/>
-            <input name="getDrugIntolerancesRequest">
+            <wsdl:input name="getDrugIntolerancesRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getDrugIntolerancesResponse">
+            </wsdl:input>
+            <wsdl:output name="getDrugIntolerancesResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getDrugIntolerance">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDrugIntolerance">
             <soap:operation soapAction=""/>
-            <input name="getDrugIntoleranceRequest">
+            <wsdl:input name="getDrugIntoleranceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getDrugIntoleranceResponse">
+            </wsdl:input>
+            <wsdl:output name="getDrugIntoleranceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createDrugIntolerance">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createDrugIntolerance">
             <soap:operation soapAction=""/>
-            <input name="createDrugIntoleranceRequest">
+            <wsdl:input name="createDrugIntoleranceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createDrugIntoleranceResponse">
+            </wsdl:input>
+            <wsdl:output name="createDrugIntoleranceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editDrugIntolerance">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDrugIntolerance">
             <soap:operation soapAction=""/>
-            <input name="editDrugIntoleranceRequest">
+            <wsdl:input name="editDrugIntoleranceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editDrugIntoleranceResponse">
+            </wsdl:input>
+            <wsdl:output name="editDrugIntoleranceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deleteDrugIntolerance">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDrugIntolerance">
             <soap:operation soapAction=""/>
-            <input name="deleteDrugIntoleranceRequest">
+            <wsdl:input name="deleteDrugIntoleranceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deleteDrugIntoleranceResponse">
+            </wsdl:input>
+            <wsdl:output name="deleteDrugIntoleranceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientContacts">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientContacts">
             <soap:operation soapAction=""/>
-            <input name="getPatientContactsRequest">
+            <wsdl:input name="getPatientContactsRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientContactsResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientContactsResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientContact">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientContact">
             <soap:operation soapAction=""/>
-            <input name="getPatientContactRequest">
+            <wsdl:input name="getPatientContactRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientContactResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientContactResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createPatientContact">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientContact">
             <soap:operation soapAction=""/>
-            <input name="createPatientContactRequest">
+            <wsdl:input name="createPatientContactRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPatientContactResponse">
+            </wsdl:input>
+            <wsdl:output name="createPatientContactResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPatientContact">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientContact">
             <soap:operation soapAction=""/>
-            <input name="editPatientContactRequest">
+            <wsdl:input name="editPatientContactRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPatientContactResponse">
+            </wsdl:input>
+            <wsdl:output name="editPatientContactResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePatientContact">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientContact">
             <soap:operation soapAction=""/>
-            <input name="deletePatientContactRequest">
+            <wsdl:input name="deletePatientContactRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePatientContactResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePatientContactResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientWorkplaces">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientWorkplaces">
             <soap:operation soapAction=""/>
-            <input name="getPatientWorkplacesRequest">
+            <wsdl:input name="getPatientWorkplacesRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientWorkplacesResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientWorkplacesResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientWorkplace">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientWorkplace">
             <soap:operation soapAction=""/>
-            <input name="getPatientWorkplaceRequest">
+            <wsdl:input name="getPatientWorkplaceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientWorkplaceResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientWorkplaceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createPatientWorkplace">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientWorkplace">
             <soap:operation soapAction=""/>
-            <input name="createPatientWorkplaceRequest">
+            <wsdl:input name="createPatientWorkplaceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPatientWorkplaceResponse">
+            </wsdl:input>
+            <wsdl:output name="createPatientWorkplaceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPatientWorkplace">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientWorkplace">
             <soap:operation soapAction=""/>
-            <input name="editPatientWorkplaceRequest">
+            <wsdl:input name="editPatientWorkplaceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPatientWorkplaceResponse">
+            </wsdl:input>
+            <wsdl:output name="editPatientWorkplaceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePatientWorkplace">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientWorkplace">
             <soap:operation soapAction=""/>
-            <input name="deletePatientWorkplaceRequest">
+            <wsdl:input name="deletePatientWorkplaceRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePatientWorkplaceResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePatientWorkplaceResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientRelations">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientRelations">
             <soap:operation soapAction=""/>
-            <input name="getPatientRelationsRequest">
+            <wsdl:input name="getPatientRelationsRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientRelationsResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientRelationsResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getPatientRelation">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPatientRelation">
             <soap:operation soapAction=""/>
-            <input name="getPatientRelationRequest">
+            <wsdl:input name="getPatientRelationRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="getPatientRelationResponse">
+            </wsdl:input>
+            <wsdl:output name="getPatientRelationResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="createPatientRelation">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createPatientRelation">
             <soap:operation soapAction=""/>
-            <input name="createPatientRelationRequest">
+            <wsdl:input name="createPatientRelationRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="createPatientRelationResponse">
+            </wsdl:input>
+            <wsdl:output name="createPatientRelationResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="editPatientRelation">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPatientRelation">
             <soap:operation soapAction=""/>
-            <input name="editPatientRelationRequest">
+            <wsdl:input name="editPatientRelationRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="editPatientRelationResponse">
+            </wsdl:input>
+            <wsdl:output name="editPatientRelationResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="deletePatientRelation">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePatientRelation">
             <soap:operation soapAction=""/>
-            <input name="deletePatientRelationRequest">
+            <wsdl:input name="deletePatientRelationRequest">
                 <soap:body use="literal"/>
-            </input>
-            <output name="deletePatientRelationResponse">
+            </wsdl:input>
+            <wsdl:output name="deletePatientRelationResponse">
                 <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="getVersion">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getVersion">
             <soap:operation soapAction=""/>
-            <input>
+            <wsdl:input>
                 <soap:body use="literal"/>
-            </input>
-            <output>
+            </wsdl:input>
+            <wsdl:output>
                 <soap:body use="literal"/>
-            </output>
-        </operation>
+            </wsdl:output>
+        </wsdl:operation>
     </binding>
-    <service name="PatientInterchangeEndPointService">
+    <wsdl:service name="PatientInterchangeEndPointService">
         <port binding="tns:PatientInterchangeEndPointBinding" name="PatientInterchangeEndPointPort">
             <soap:address location="https://med.tatar.ru/patients-ws/patient"/>
         </port>
-    </service>
-</definitions>
+    </wsdl:service>
+</wsdl:definitions>

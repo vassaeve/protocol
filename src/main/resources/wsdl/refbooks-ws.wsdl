@@ -1,231 +1,231 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:typens="http://atria.cz/nsi/types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bi="http://atria.cz/common/base/info/build/" name="refbookService" targetNamespace="http://atria.cz/nsi/types">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:typens="http://atria.cz/nsi/types"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:bi="http://atria.cz/common/base/info/build/"
+                  name="refbookService"
+                  targetNamespace="http://atria.cz/nsi/types">
     <wsdl:types>
-        <xsd:schema 
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-            xmlns:typens="http://atria.cz/nsi/types" 
-            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-            xmlns:bi="http://atria.cz/common/base/info/build/">
-            <xsd:import 
-                namespace="http://atria.cz/common/base/info/build/" 
-                schemaLocation="../xsd/buildInfo.xsd"/>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:typens="http://atria.cz/nsi/types" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:bi="http://atria.cz/common/base/info/build/">
+
+            <xsd:import namespace="http://atria.cz/common/base/info/build/" schemaLocation="../xsd/buildInfo.xsd"/>
+
         </xsd:schema>
-        <xsd:schema 
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
-            xmlns:typens="http://atria.cz/nsi/types" 
-            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-            xmlns:bi="http://atria.cz/common/base/info/build/" 
-            elementFormDefault="qualified" 
-            targetNamespace="http://atria.cz/nsi/types">
-            
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:typens="http://atria.cz/nsi/types"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:bi="http://atria.cz/common/base/info/build/" elementFormDefault="qualified"
+                    targetNamespace="http://atria.cz/nsi/types">
+
             <xsd:complexType name="getRefbookRequest">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="refbookCode" type="xsd:string"/>
-                    
+
                     <xsd:element name="version" type="xsd:string"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getRefbookResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element maxOccurs="unbounded" minOccurs="0" name="row" type="typens:rowType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
-           
+
+
             <xsd:complexType name="getRefbookListResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element maxOccurs="unbounded" minOccurs="0" name="refbook" type="typens:rowType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
-            
+
+
             <xsd:complexType name="getRefbookPartialRequest">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="refbookCode" type="xsd:string"/>
-                    
+
                     <xsd:element name="version" type="xsd:string"/>
-                    
+
                     <xsd:element name="partNumber" type="xsd:integer"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getRefbookPartialResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element maxOccurs="unbounded" minOccurs="0" name="row" type="typens:rowType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getRefbookPartsRequest">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="refbookCode" type="xsd:string"/>
-                    
+
                     <xsd:element name="version" type="xsd:string"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getRefbookPartsResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="count" type="xsd:integer"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getRefbookRowDataRequest">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="refbookCode" type="xsd:string"/>
-                    
+
                     <xsd:element name="version" type="xsd:string"/>
-                    
+
                     <xsd:element maxOccurs="1" minOccurs="1" name="column" type="typens:columnType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getRefbookRowDataResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element maxOccurs="unbounded" minOccurs="0" name="row" type="typens:rowType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getServerTimeRequest">
-                
+
                 <xsd:sequence/>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getServerTimeResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="timestamp" type="xsd:dateTime"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getVersionListRequest">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="refbookCode" type="xsd:string"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="getVersionListResponse">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element maxOccurs="unbounded" minOccurs="0" name="version" type="typens:rowType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="rowType">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element maxOccurs="unbounded" minOccurs="0" name="column" type="typens:columnType"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:complexType name="columnType">
-                
+
                 <xsd:sequence>
-                    
+
                     <xsd:element name="name" type="xsd:string"/>
-                    
+
                     <xsd:element name="data" nillable="true" type="xsd:string"/>
-                
+
                 </xsd:sequence>
-            
+
             </xsd:complexType>
 
-            
+
             <xsd:element name="getRefbookRequest" type="typens:getRefbookRequest"/>
-            
+
             <xsd:element name="getRefbookResponse" type="typens:getRefbookResponse"/>
 
-            
+
             <xsd:element name="getRefbookListResponse" type="typens:getRefbookListResponse"/>
 
-            
+
             <xsd:element name="getRefbookPartialRequest" type="typens:getRefbookPartialRequest"/>
-            
+
             <xsd:element name="getRefbookPartialResponse" type="typens:getRefbookPartialResponse"/>
 
-            
+
             <xsd:element name="getRefbookPartsRequest" type="typens:getRefbookPartsRequest"/>
-            
+
             <xsd:element name="getRefbookPartsResponse" type="typens:getRefbookPartsResponse"/>
 
-            
+
             <xsd:element name="getRefbookRowDataRequest" type="typens:getRefbookRowDataRequest"/>
-            
+
             <xsd:element name="getRefbookRowDataResponse" type="typens:getRefbookRowDataResponse"/>
 
-            
+
             <xsd:element name="getServerTimeRequest" type="typens:getServerTimeRequest"/>
-            
+
             <xsd:element name="getServerTimeResponse" type="typens:getServerTimeResponse"/>
 
-            
+
             <xsd:element name="getVersionListRequest" type="typens:getVersionListRequest"/>
-            
+
             <xsd:element name="getVersionListResponse" type="typens:getVersionListResponse"/>
-        
+
         </xsd:schema>
     </wsdl:types>
     <wsdl:message name="getVersionResponse">

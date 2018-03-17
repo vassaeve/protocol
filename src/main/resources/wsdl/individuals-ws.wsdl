@@ -1,27 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
-<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-             xmlns:tns="http://atria.cz/individuals/api/" 
-             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-             xmlns:ind="http://atria.cz/individuals/" 
-             xmlns:bi="http://atria.cz/common/base/info/build/" 
-             xmlns="http://schemas.xmlsoap.org/wsdl/" 
-             name="IndividualsEndPointService" 
-             targetNamespace="http://atria.cz/individuals/api/">
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://atria.cz/individuals/api/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:ind="http://atria.cz/individuals/" xmlns:bi="http://atria.cz/common/base/info/build/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="IndividualsEndPointService" targetNamespace="http://atria.cz/individuals/api/">
     <types>
-        <xsd:schema 
-            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-            xmlns:tns="http://atria.cz/individuals/api/" 
-            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
-            xmlns:ind="http://atria.cz/individuals/" 
-            xmlns:bi="http://atria.cz/common/base/info/build/" 
-            xmlns="http://schemas.xmlsoap.org/wsdl/">
-            <xsd:import 
-                namespace="http://atria.cz/individuals/" 
-                schemaLocation="../xsd/individuals.xsd"/>
-            <xsd:import 
-                namespace="http://atria.cz/common/base/info/build/" 
-                schemaLocation="../xsd/buildInfo.xsd"/>
+        <!--xmlns:tns="http://atria.cz/individuals/api/" -->
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:ind="http://atria.cz/individuals/" xmlns:bi="http://atria.cz/common/base/info/build/"
+                    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+            <xsd:import namespace="http://atria.cz/individuals/" schemaLocation="../xsd/individuals.xsd"/>
+
+            <xsd:import namespace="http://atria.cz/common/base/info/build/" schemaLocation="../xsd/buildInfo.xsd"/>
+
         </xsd:schema>
     </types>
     <message name="createIndividualAddressRequest">
@@ -318,7 +313,8 @@
         <operation name="removeTypeFromIndividualAddress">
             <input message="tns:removeTypeFromIndividualAddressRequest" name="removeTypeFromIndividualAddressRequest">
             </input>
-            <output message="tns:removeTypeFromIndividualAddressResponse" name="removeTypeFromIndividualAddressResponse">
+            <output message="tns:removeTypeFromIndividualAddressResponse"
+                    name="removeTypeFromIndividualAddressResponse">
             </output>
         </operation>
         <operation name="createIndividualCode">
@@ -342,7 +338,8 @@
         <operation name="getIndividualCodeByIndividualId">
             <input message="tns:getIndividualCodesByIndividualIdRequest" name="getIndividualCodesByIndividualIdRequest">
             </input>
-            <output message="tns:getIndividualCodesByIndividualIdResponse" name="getIndividualCodesByIndividualIdResponse">
+            <output message="tns:getIndividualCodesByIndividualIdResponse"
+                    name="getIndividualCodesByIndividualIdResponse">
             </output>
         </operation>
         <operation name="deleteIndividualCode">

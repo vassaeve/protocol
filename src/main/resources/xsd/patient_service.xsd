@@ -1,14 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
-<xs:schema 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-    xmlns:tns="http://atria.cz/medical/integration/patient/api/" 
-    xmlns:ns1="http://atria.cz/medical/integration/patient/" 
-    elementFormDefault="qualified" 
-    targetNamespace="http://atria.cz/medical/integration/patient/api/" 
-    version="1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://atria.cz/medical/integration/patient/api/"
+           xmlns:ns1="http://atria.cz/medical/integration/patient/"
+           elementFormDefault="qualified"
+           targetNamespace="http://atria.cz/medical/integration/patient/api/" version="1.0">
 
-    <xs:import namespace="http://atria.cz/medical/integration/patient/" schemaLocation="../xsd/patients.xsd"/>
+    <xs:import namespace="http://atria.cz/medical/integration/patient/"
+               schemaLocation="../xsd/patients.xsd"/>
 
     <xs:element name="getPatient" type="tns:getPatient"/>
 

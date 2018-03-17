@@ -22,7 +22,7 @@ public final class ModelUtils {
         Map<String, Float> col_size = new HashMap<>(0);
 
         col_size.put("Дата регистр.", new Float(0.15));
-        col_size.put("Фамилия Имя Отчество", new Float(0.85));
+        col_size.put("Фамилия Имя Отчество", new Float(0.85));     
 
         return col_size;
     }

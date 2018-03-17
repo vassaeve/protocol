@@ -1,10 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?>
-<xs:schema 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:tns="http://atria.cz/medical/integration/patient/" 
-    elementFormDefault="qualified" 
-    targetNamespace="http://atria.cz/medical/integration/patient/" 
-    version="1.0">
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/medical/integration/patient/"
+           elementFormDefault="qualified" targetNamespace="http://atria.cz/medical/integration/patient/" version="1.0">
 
     <xs:complexType name="xPatientCard">
         <xs:sequence>
@@ -38,7 +34,8 @@
                     <xs:documentation>Данные о месте работы пациента</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="registrations" nillable="true" type="tns:xRegistration">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="registrations" nillable="true"
+                        type="tns:xRegistration">
                 <xs:annotation>
                     <xs:documentation>Прикрепления</xs:documentation>
                 </xs:annotation>
@@ -210,7 +207,8 @@
                 <xs:annotation>
                     <xs:documentation>
                         Индивидульный номер (СНИЛС, ЕНП).
-                        Нужно заметить, что код и серия-номер - разные вещи. У СНИЛС нет серии и номера, у него есть только код.
+                        Нужно заметить, что код и серия-номер - разные вещи. У СНИЛС нет серии и номера, у него есть
+                        только код.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -480,7 +478,8 @@
             </xs:element>
             <xs:element minOccurs="0" name="docIssuer" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation>Название организации, выдавшей документ (о предоставлении льготы)</xs:documentation>
+                    <xs:documentation>Название организации, выдавшей документ (о предоставлении льготы)
+                    </xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element minOccurs="0" name="docIssuerDate" type="xs:date">

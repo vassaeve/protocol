@@ -1,2 +1,7 @@
 /target/
 /data/
+/.idea/
+/nbactions.xml
+/nb-configuration.xml
+/protocol.iml
+/lib/
