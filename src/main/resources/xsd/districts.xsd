@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/lsd/integration/medical/district/entity" elementFormDefault="qualified" targetNamespace="http://atria.cz/lsd/integration/medical/district/entity" version="1.0">
+
+    <xs:element name="getDistrictRequest" type="xs:int"/>
+    <xs:element name="getDistrictResponse" type="tns:xDistrict"/>
+
+    <xs:element name="getSeparationRequest" type="xs:int"/>
+    <xs:element name="getSeparationResponse" type="tns:xClinicSeparation"/>
+
+    <xs:element name="searchDistrictsRequest" type="tns:xSearchDistrictsOptions"/>
+    <xs:element name="searchDistrictsResponse" type="tns:xDistricts"/>
+
+    <xs:complexType name="xDistrict">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Наименование участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="orderNumber" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Порядковый номер участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="regTypeId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Тип прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="clinicId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>МО прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="separationId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Картотека разбиения участков</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="typeId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Тип участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="kindId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Вид участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xClinicSeparation">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Наименование разбивки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="clinicId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>МО прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="profileId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Мед. профиль, для которого предназначено разбиение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="regTypeId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Тип прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xDistricts">
+        <xs:annotation>
+            <xs:documentation>Список участков</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="district" type="tns:districtEntry"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="districtEntry">
+        <xs:all>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element minOccurs="0" name="name" type="xs:string"/>
+            <xs:element minOccurs="0" name="orderNumber" type="xs:int"/>
+            <xs:element minOccurs="0" name="regTypeId" type="xs:string"/>
+            <xs:element minOccurs="0" name="typeId" type="xs:string"/>
+            <xs:element minOccurs="0" name="kindId" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="xSearchDistrictsOptions">
+        <xs:sequence>
+            <xs:element name="clinic" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>МО прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="separation" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Уникальный код разбивки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Наименование участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="orderNumber" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Порядковый номер участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="regType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Тип прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="type" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Тип участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="kind" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Вид участка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

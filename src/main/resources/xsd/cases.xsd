@@ -1,0 +1,660 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:typens="http://atria.cz/medical-cases/interchange" elementFormDefault="qualified" targetNamespace="http://atria.cz/medical-cases/interchange">
+    <xsd:complexType name="medicalCase">
+        <xsd:annotation>
+            <xsd:documentation>Объект учета "Случай обслуживания"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="id" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="uid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Номер случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="patientUid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Пациент</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="medicalOrganizationId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Клиника</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="caseTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вида случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careLevelId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Уровень медицинской помощи</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="fundingSourceTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вида источника финансирования</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="socialGroupId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Социальный статус</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="paymentMethodId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Способ оплаты</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careRegimenId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Режим лечения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="diagnoses" type="typens:diagnos">
+                <xsd:annotation>
+                    <xsd:documentation>Диагнозы</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="initGoalId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Цель обращения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="repeatCountId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кратность случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="referralId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Направление</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="referralResultingId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Результат направления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="caseResult" type="typens:caseResult">
+                <xsd:annotation>
+                    <xsd:documentation>Результат случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="admissionTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид поступления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="admissionReasonId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Причина поступления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="admissionStateId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Состояние пациента при поступлении</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="drunkennessTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид опьянения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="timeGoneId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Время, прошедшее с момента возникновения причины обращения
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="emergencyTeamNumber" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Номер бригады скорой помощи</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="transportingTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид транспортировки</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="createdDate" type="xsd:date">
+                <xsd:annotation>
+                    <xsd:documentation>Дата создания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="complexityLevelId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Уровень сложности</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="stateId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Состояние случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careProvidingFormId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Форма оказания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="note" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Примечание</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredCode" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кем доcтавлен, код</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredTeamNumber" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation>Кем доcтавлен, номер наряда</xsd:documentation>
+            </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="notesToWork" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Замечания к работе бригады</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CaseBase">
+        <xsd:annotation>
+            <xsd:documentation>Объект учета "Случай обслуживания"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="uid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Номер случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="caseTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вида случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careLevelId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Уровень медицинской помощи</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="fundingSourceTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вида источника финансирования</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="socialGroupId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Социальный статус</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="paymentMethodId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Способ оплаты</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careRegimenId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Режим лечения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="initGoalId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Цель обращения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="repeatCountId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кратность случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="referralResultingId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Результат направления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="admissionTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид поступления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="admissionReasonId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Причина поступления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="admissionStateId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Состояние пациента при поступлении</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="drunkennessTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид опьянения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="timeGoneId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Время, прошедшее с момента возникновения причины обращения
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="emergencyTeamNumber" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Номер бригады скорой помощи</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="transportingTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид транспортировки</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="createdDate" type="xsd:date">
+                <xsd:annotation>
+                    <xsd:documentation>Дата создания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="complexityLevelId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Уровень сложности</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="stateId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Состояние случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careProvidingFormId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Форма оказания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="note" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Примечание</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredCode" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кем доcтавлен, код</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredTeamNumber" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кем доcтавлен, номер наряда</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="caseResult">
+        <xsd:annotation>
+            <xsd:documentation>Объект учета "Результат обращения"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="healthGroupId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Группа здоровья</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="dispensaryGroupId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Диспансерная группа</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careRegimenId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Режим лечения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clinicId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Медицинская организация</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="diagnosisId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Диагноз</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="prehosStageDefId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Дефект догоспитального этапа</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="deathReasonDiagnId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Причина смерти</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="forCare" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>По уходу за больным</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careGenderId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>По уходу за больным. Пол</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careFullYears" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Количество полных лет</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="CaseResultBase">
+        <xsd:annotation>
+            <xsd:documentation>Объект учета "Результат обращения"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="healthGroupId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Группа здоровья</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="dispensaryGroupId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Диспансерная группа</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careRegimenId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Режим лечения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="diagnosisId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Диагноз</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="prehosStageDefId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Дефект догоспитального этапа</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="deathReasonDiagnId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Причина смерти</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="forCare" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>По уходу за больным</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careGenderId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>По уходу за больным. Пол</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careFullYears" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Количество полных лет</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="medicalCaseCriteria">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="uid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Номер случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="patientUid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Пациент</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="medicalOrganizationId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Клиника</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="caseTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careLevelId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Уровень медицинской помощи</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="paymentMethodId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Способ оплаты</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="openedFromDate" type="xsd:date"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="openedToDate" type="xsd:date"/>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="closedFromDate" type="xsd:date"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="closedToDate" type="xsd:date"/>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="careResultId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Результат обращения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="deseaseResultId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Исход заболевания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="specialistId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Специалист</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredCode" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кем доcтавлен, код</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="whoDeliveredTeamNumber" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Кем доcтавлен, номер наряда</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="referralId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Направление</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CaseCriteriaBase">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="uid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Номер случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="caseTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид случая</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="careLevelId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Уровень медицинской помощи</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="paymentMethodId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Способ оплаты</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="openedFromDate" type="xsd:date"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="openedToDate" type="xsd:date"/>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="closedFromDate" type="xsd:date"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="closedToDate" type="xsd:date"/>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="careResultId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Результат обращения</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="deseaseResultId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Исход заболевания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+            <xsd:element maxOccurs="1" minOccurs="0" name="specialistId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Специалист</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="diagnos">
+        <xsd:annotation>
+            <xsd:documentation>Диагноз</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="stageId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Этап установления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="typeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид диагноза</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="diagnosId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Диагноз по МКБ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="note" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Дополнение к диагнозу</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="diseaseTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Характер заболевания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="injuryTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид травмы</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="establishmentDate" type="xsd:date">
+                <xsd:annotation>
+                    <xsd:documentation>Дата установления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="stepId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Шаг</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="doctorId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Специалист, установивший диагноз</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="main" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>Признак основного диагноза</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DiagnoseBase">
+        <xsd:annotation>
+            <xsd:documentation>Диагноз</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="stageId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Этап установления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="typeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид диагноза</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="diagnosId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Диагноз по МКБ</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="note" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Дополнение к диагнозу</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="diseaseTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Характер заболевания</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="injuryTypeId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Вид травмы</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="establishmentDate" type="xsd:date">
+                <xsd:annotation>
+                    <xsd:documentation>Дата установления</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="main" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>Признак основного диагноза</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="medicalCaseId">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="id" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="medicalCaseIds">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="ids" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="sendCaseRequest" type="typens:medicalCase"/>
+    <xsd:element name="getCaseByIdResponse" type="typens:medicalCase"/>
+
+    <xsd:element name="sendCaseResponse" type="typens:medicalCaseId"/>
+    <xsd:element name="getCaseByIdRequest" type="typens:medicalCaseId"/>
+    <xsd:element name="deleteCaseRequest" type="typens:medicalCaseId"/>
+    <xsd:element name="deleteCaseResponse" type="typens:medicalCaseId"/>
+
+    <xsd:element name="medicalCaseIds" type="typens:medicalCaseIds"/>
+    <xsd:element name="medicalCaseCriteria" type="typens:medicalCaseCriteria"/>
+
+</xsd:schema>

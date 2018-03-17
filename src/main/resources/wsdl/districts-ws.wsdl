@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/lsd/integration/medical/district" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:pat="http://atria.cz/lsd/integration/medical/district/entity" xmlns:bi="http://atria.cz/common/base/info/build/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="DistrictsEndPointService" targetNamespace="http://atria.cz/lsd/integration/medical/district">
+<documentation>Сервис обмена информацией об участках прикрепления</documentation>
+  <types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/lsd/integration/medical/district" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:pat="http://atria.cz/lsd/integration/medical/district/entity" 
+xmlns:bi="http://atria.cz/common/base/info/build/" 
+xmlns="http://schemas.xmlsoap.org/wsdl/">
+            
+  <xsd:import namespace="http://atria.cz/lsd/integration/medical/district/entity" 
+	schemaLocation="https://med.tatar.ru/districts-ws/district?xsd=districts.xsd"/>
+            
+  <xsd:import namespace="http://atria.cz/common/base/info/build/" 
+	schemaLocation="https://med.tatar.ru/districts-ws/district?xsd=http://atria.cz/common/base/buildInfo.xsd"/>
+        
+</xsd:schema>
+  </types>
+  <message name="searchDistrictsResponse">
+<documentation>Ответ на запрос поиска участков, содержит найденные по критериям поиска участки прикрепления</documentation>
+    <part element="pat:searchDistrictsResponse" name="response">
+    </part>
+  </message>
+  <message name="getSeparationRequest">
+<documentation>Запрос разбивки</documentation>
+    <part element="pat:getSeparationRequest" name="id">
+    </part>
+  </message>
+  <message name="getDistrictResponse">
+<documentation>Ответ на запрос с информацией об участке</documentation>
+    <part element="pat:getDistrictResponse" name="response">
+    </part>
+  </message>
+  <message name="getVersionRequest">
+<documentation>Запрос версии сервиса</documentation>
+    <part element="bi:getVersionRequest" name="getVersionRequest">
+    </part>
+  </message>
+  <message name="getDistrictRequest">
+<documentation>Запрос участка</documentation>
+    <part element="pat:getDistrictRequest" name="request">
+    </part>
+  </message>
+  <message name="getSeparationResponse">
+<documentation>Ответ на запрос с информацией о разбивке</documentation>
+    <part element="pat:getSeparationResponse" name="response">
+    </part>
+  </message>
+  <message name="getVersionResponse">
+<documentation>Ответ на запрос с данными о версии сервиса</documentation>
+    <part element="bi:getVersionResponse" name="getVersionResponse">
+    </part>
+  </message>
+  <message name="searchDistrictsRequest">
+<documentation>Запрос поиска участков прикрепления по заданным критериям</documentation>
+    <part element="pat:searchDistrictsRequest" name="request">
+    </part>
+  </message>
+  <portType name="DistrictsPortType">
+    <operation name="getDistrict">
+      <input message="tns:getDistrictRequest" name="getDistrictRequest">
+    </input>
+      <output message="tns:getDistrictResponse" name="getDistrictResponse">
+    </output>
+    </operation>
+    <operation name="getSeparation">
+      <input message="tns:getSeparationRequest" name="getSeparationRequest">
+    </input>
+      <output message="tns:getSeparationResponse" name="getSeparationResponse">
+    </output>
+    </operation>
+    <operation name="searchDistricts">
+      <input message="tns:searchDistrictsRequest" name="searchDistrictsRequest">
+    </input>
+      <output message="tns:searchDistrictsResponse" name="searchDistrictsResponse">
+    </output>
+    </operation>
+    <operation name="getVersion">
+      <input message="tns:getVersionRequest" name="getVersionRequest">
+    </input>
+      <output message="tns:getVersionResponse" name="getVersionResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="DistrictsEndPointBinding" type="tns:DistrictsPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getDistrict">
+<documentation>Получение информации об участке прикрепления по его идентификатору</documentation>
+      <soap:operation soapAction=""/>
+      <input name="getDistrictRequest">
+        <soap:body use="literal"/>
+      </input>
+      <output name="getDistrictResponse">
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getSeparation">
+<documentation>Получение информации о разбивке по её идентификатору</documentation>
+      <soap:operation soapAction=""/>
+      <input name="getSeparationRequest">
+        <soap:body use="literal"/>
+      </input>
+      <output name="getSeparationResponse">
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="searchDistricts">
+<documentation>Поиск участков по заданным критериям</documentation>
+      <soap:operation soapAction=""/>
+      <input name="searchDistrictsRequest">
+        <soap:body use="literal"/>
+      </input>
+      <output name="searchDistrictsResponse">
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getVersion">
+<documentation>Получение информации о версии сервиса</documentation>
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="DistrictsEndPointService">
+    <port binding="tns:DistrictsEndPointBinding" name="DistrictsEndPointPort">
+      <soap:address location="https://med.tatar.ru/districts-ws/district"/>
+    </port>
+  </service>
+</definitions>

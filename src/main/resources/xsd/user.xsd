@@ -1,0 +1,506 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/user/main" elementFormDefault="qualified" targetNamespace="http://atria.cz/user/main">
+
+    <xsd:element name="getUsersRequest" type="tns:getUsersRequest"/>
+    <xsd:element name="getUsersResponse" type="tns:getUsersResponse"/>
+
+    <xsd:element name="createUserRequest" type="tns:createUserRequest"/>
+    <xsd:element name="createUserResponse" type="tns:createUserResponse"/>
+
+    <xsd:element name="editUserRequest" type="tns:editUserRequest"/>
+    <xsd:element name="editUserResponse" type="tns:editUserResponse"/>
+
+    <xsd:element name="deleteUserRequest" type="tns:deleteUserRequest"/>
+    <xsd:element name="deleteUserResponse" type="tns:deleteUserResponse"/>
+
+    <xsd:element name="getRolesRequest" type="tns:getRolesRequest"/>
+    <xsd:element name="getRolesResponse" type="tns:getRolesResponse"/>
+
+    <xsd:element name="getRoleByIdRequest" type="tns:getRoleByIdRequest"/>
+    <xsd:element name="getRoleByIdResponse" type="tns:getRoleByIdResponse"/>
+
+    <xsd:element name="assignRoleRequest" type="tns:assignRoleRequest"/>
+    <xsd:element name="assignRoleResponse" type="tns:assignRoleResponse"/>
+    <xsd:element name="removeRoleRequest" type="tns:removeRoleRequest"/>
+    <xsd:element name="removeRoleResponse" type="tns:removeRoleResponse"/>
+    <xsd:element name="getUserRolesRequest" type="tns:getUserRolesRequest"/>
+    <xsd:element name="getUserRolesResponse" type="tns:getUserRolesResponse"/>
+
+    <xsd:element name="addAvailableMORequest" type="tns:addAvailableMORequest"/>
+    <xsd:element name="addAvailableMOResponse" type="tns:addAvailableMOResponse"/>
+    <xsd:element name="removeAvailableMORequest" type="tns:removeAvailableMORequest"/>
+    <xsd:element name="removeAvailableMOResponse" type="tns:removeAvailableMOResponse"/>
+    <xsd:element name="getAvailableMORequest" type="tns:getAvailableMORequest"/>
+    <xsd:element name="getAvailableMOResponse" type="tns:getAvailableMOResponse"/>
+
+    <xsd:complexType name="getUsersRequest">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="login" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Логин</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Тип пользователя: 1 - физ.лицо, 2 - организация</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="surname" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Фамилия</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Имя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="patronymic" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Отчество</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="fullName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Полное наименование организации</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="shortName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Краткое наименование организации</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="role" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="email" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Электронная почта</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="blocked" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Признак заблокирования пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="availableMO" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор доступной МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="getUsersResponse">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="user" type="tns:userType">
+                <xsd:annotation>
+                    <xsd:documentation>Список пользователей</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="createUserRequest">
+        <xsd:sequence>
+            <xsd:element name="user" type="tns:createUserType">
+                <xsd:annotation>
+                    <xsd:documentation>Данные пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="createUserResponse">
+        <xsd:sequence>
+            <xsd:element name="user" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="editUserRequest">
+        <xsd:sequence>
+            <xsd:element name="user" type="tns:editUserType">
+                <xsd:annotation>
+                    <xsd:documentation>Данные пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="editUserResponse">
+        <xsd:sequence>
+            <xsd:element name="user" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="deleteUserRequest">
+        <xsd:sequence>
+            <xsd:element name="user" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="deleteUserResponse">
+    </xsd:complexType>
+
+    <xsd:complexType name="getRolesRequest">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="role" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Наименование роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="getRolesResponse">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="role" type="tns:roleType">
+                <xsd:annotation>
+                    <xsd:documentation>Список ролей</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="getRoleByIdRequest">
+        <xsd:sequence>
+            <xsd:element name="role" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="getRoleByIdResponse">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="role" type="tns:roleType">
+                <xsd:annotation>
+                    <xsd:documentation>Роль</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="assignRoleRequest">
+        <xsd:sequence>
+            <xsd:element name="roleId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="orgId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор доступного МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="assignRoleResponse">
+    </xsd:complexType>
+
+    <xsd:complexType name="removeRoleRequest">
+        <xsd:sequence>
+            <xsd:element name="roleId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="orgId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор доступного МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="removeRoleResponse">
+    </xsd:complexType>
+
+    <xsd:complexType name="getUserRolesRequest">
+        <xsd:sequence>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="getUserRolesResponse">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="role" type="tns:userRoleType">
+                <xsd:annotation>
+                    <xsd:documentation>Список ролей пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="userRoleType">
+        <xsd:sequence>
+            <xsd:element name="roleId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="orgId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор доступного МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="addAvailableMORequest">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="orgId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="addAvailableMOResponse">
+    </xsd:complexType>
+
+    <xsd:complexType name="removeAvailableMORequest">
+        <xsd:sequence>
+            <xsd:element name="orgId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="removeAvailableMOResponse">
+    </xsd:complexType>
+
+    <xsd:complexType name="getAvailableMORequest">
+        <xsd:sequence>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="getAvailableMOResponse">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="role" type="tns:orgType">
+                <xsd:annotation>
+                    <xsd:documentation>Список доступных пользователю МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="roleType">
+        <xsd:sequence>
+            <xsd:element name="roleId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="role" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Наименование роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="orgType">
+        <xsd:sequence>
+            <xsd:element name="orgId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="org" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Наименование МО</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="userType">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="id" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя в системе</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="partyId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор физ. лица / организации</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="login" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Логин</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="email" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Электронная почта</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Тип пользователя: 1 - физ.лицо, 2 - организация</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="surname" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Фамилия</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Имя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="patronymic" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Отчество</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="fullName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Полное наименование организации</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="shortName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Краткое наименование организации</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="role" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор роли</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="blocked" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Признак заблокирования пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="createUserType">
+        <xsd:sequence>
+            <xsd:element name="login" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Логин</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="password" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Пароль</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="email" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Электронная почта</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:choice>
+                <xsd:element name="employee" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Идентификатор сотрудника</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="individual" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Идентификатор физического лица</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="organization" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Идентификатор организации</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="editUserType">
+        <xsd:sequence>
+            <xsd:element name="userId" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Идентификатор пользователя</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="login" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Логин</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="password" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Пароль</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="email" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Электронная почта</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:choice minOccurs="0">
+                <xsd:element name="employee" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Идентификатор сотрудника</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="organization" type="xsd:string">
+                    <xsd:annotation>
+                        <xsd:documentation>Идентификатор организации</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

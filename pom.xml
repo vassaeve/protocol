@@ -55,6 +55,43 @@
     </dependencies>
     
     <build>
+        
+        <pluginManagement>
+            <plugins>
+                
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.4.0.905</version>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.0</version>
+                    <configuration>
+                        <append>true</append>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>agent-for-ut</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>                            
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            
+            </plugins>
+        </pluginManagement>
+  
         <plugins>
             <plugin>
                 <groupId>org.liquibase</groupId>
@@ -72,8 +109,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
-            
+                        
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -113,5 +149,29 @@
 
         </plugins>
     </build>
+    
+    
+    <!--
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>http://localhost:9000</sonar.host.url>     
+                <sonar.></sonar>           
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonarsource.scanner.maven</groupId>
+                        <artifactId>sonar-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    -->
     
 </project>

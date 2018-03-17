@@ -1,0 +1,523 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/individuals/" elementFormDefault="qualified" targetNamespace="http://atria.cz/individuals/" version="1.0">
+
+    <xs:element name="createIndividualRequest" type="tns:xIndividualShort"/>
+    <xs:element name="createIndividualResponse" type="xs:string"/>
+
+    <xs:element name="editIndividualRequest" type="tns:editIndividualRequest"/>
+    <xs:element name="editIndividualResponse" type="xs:string"/>
+
+    <xs:element name="getIndividualRequest" type="xs:string"/>
+    <xs:element name="getIndividualResponse" type="tns:xIndividualShort"/>
+
+    <xs:element name="searchIndividualRequest" type="tns:xSearchOptions"/>
+    <xs:element name="searchIndividualResponse" type="tns:xIndividuals"/>
+
+    <xs:element name="deleteIndividualRequest" type="xs:string"/>
+    <xs:element name="deleteIndividualResponse" type="xs:string"/>
+
+    <xs:element name="getIndividualDocumentsRequest" type="xs:string"/>
+    <xs:element name="getIndividualDocumentsResponse" type="tns:xIndividualDocuments"/>
+
+    <xs:element name="getDocumentRequest" type="xs:string"/>
+    <xs:element name="getDocumentResponse" type="tns:xIndividualDocument"/>
+
+    <xs:element name="createDocumentRequest" type="tns:xIndividualDocument"/>
+    <xs:element name="createDocumentResponse" type="xs:string"/>
+
+    <xs:element name="editDocumentRequest" type="tns:editDocumentRequest"/>
+    <xs:element name="editDocumentResponse" type="xs:string"/>
+
+    <xs:element name="deleteDocumentRequest" type="xs:string"/>
+    <xs:element name="deleteDocumentResponse" type="xs:string"/>
+
+
+    <xs:element name="getIndividualAddressesRequest" type="xs:string"/>
+    <xs:element name="getIndividualAddressesResponse" type="tns:xIndividualAddresses"/>
+
+    <xs:element name="getIndividualAddressRequest" type="xs:string"/>
+    <xs:element name="getIndividualAddressResponse" type="tns:xIndividualAddress"/>
+
+    <xs:element name="createIndividualAddressRequest" type="tns:xIndividualAddress"/>
+    <xs:element name="createIndividualAddressResponse" type="xs:string"/>
+
+    <xs:element name="editIndividualAddressRequest" type="tns:editIndividualAddressRequest"/>
+    <xs:element name="editIndividualAddressResponse" type="xs:string"/>
+
+    <xs:element name="deleteIndividualAddressRequest" type="xs:string"/>
+    <xs:element name="deleteIndividualAddressResponse" type="xs:string"/>
+
+    <xs:element name="getIndividualAddressTypesRequest" type="xs:string"/>
+    <xs:element name="getIndividualAddressTypesResponse" type="tns:xIndividualAddressTypes"/>
+
+    <xs:element name="addTypeToIndividualAddressRequest" type="tns:xIndividualAddressToAddressType"/>
+
+    <xs:element name="removeTypeFromIndividualAddressRequest" type="tns:xIndividualAddressToAddressType"/>
+
+
+    <xs:element name="createIndividualCodeRequest" type="tns:xIndividualCode"/>
+    <xs:element name="createIndividualCodeResponse" type="xs:string"/>
+
+    <xs:element name="editIndividualCodeRequest" type="tns:editIndividualCodeRequest"/>
+    <xs:element name="editIndividualCodeResponse" type="xs:string"/>
+
+    <xs:element name="getIndividualCodeRequest" type="xs:string"/>
+    <xs:element name="getIndividualCodeResponse" type="tns:xIndividualCode"/>
+
+    <xs:element name="getIndividualCodesByIndividualIdRequest" type="xs:string"/>
+    <xs:element name="getIndividualCodesByIndividualIdResponse" type="tns:xIndividualCodes"/>
+
+    <xs:element name="deleteIndividualCodeRequest" type="xs:string"/>
+    <xs:element name="deleteIndividualCodeResponse" type="xs:string"/>
+
+
+    <xs:complexType name="xIndividualCode">
+        <xs:sequence>
+
+            <xs:element minOccurs="0" name="individual" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор физ. лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="code" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Значение кода (СНИЛС, ЕНП)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="codeType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Типа кода</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="issueDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата выдачи</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xSearchCode">
+        <xs:sequence>
+            <xs:element name="codeValue" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Значение кода</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="codeTypeId" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор типа кода</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualDocuments">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="document" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualDocument">
+        <xs:sequence>
+            <xs:element name="individualUid" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Уникальный код физ. лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="type" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор типа документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="issuer" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Уникальный код организации, выдавшей докуиент</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="issuerText" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Кем выдан (текст)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="series" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Серия бланка документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="number" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Номер бланка документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="surname" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Фамилия, указанная в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Имя, указанное в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="patrName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Отчество, указанное в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="birthDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата рождения, указанная в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="issueDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата выдачи документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="expireDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания действия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="active" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>Признак действительности документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="note" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="IndividualDocumentBase">
+        <xs:sequence>
+            <xs:element name="type" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор типа документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="issuerText" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Кем выдан (текст)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="series" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Серия бланка документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="number" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Номер бланка документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="surname" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Фамилия, указанная в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Имя, указанное в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="patrName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Отчество, указанное в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="birthDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата рождения, указанная в документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="issueDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата выдачи документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="expireDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания действия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="active" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>Признак действительности документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="note" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xSearchDocument">
+        <xs:sequence>
+            <xs:element name="docTypeId" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор типа документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="docSeries" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Серия документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="docNumber" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Номер документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualShort">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="surname" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="patrName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="birthDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата рождения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="gender" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор пола из справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="deathDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата смерти</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xSearchOptions">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="surname" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="patrName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="birthDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата рождения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="gender" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Код пола из справочника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="deathDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата смерти</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="searchCode" type="tns:xSearchCode">
+                <xs:annotation>
+                    <xs:documentation>Код</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="searchDocument" type="tns:xSearchDocument">
+                <xs:annotation>
+                    <xs:documentation>Документ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividuals">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="individual" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="editIndividualRequest">
+        <xs:sequence>
+            <xs:element name="individualId" type="xs:string"/>
+            <xs:element name="individualData" type="tns:xIndividualShort"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="editDocumentRequest">
+        <xs:sequence>
+            <xs:element name="documentId" type="xs:string"/>
+            <xs:element name="documentData" type="tns:xIndividualDocument"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="xIndividualAddress">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="individual" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор физ лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="registerType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор типа регистрации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="addressId" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор адреса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="addressText" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Адрес (если невозможно получить идентификатор)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="toDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Начальная дата</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="fromDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Конечная дата</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="valid" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>Признак валидности</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="note" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualAddresses">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="individualAddress" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualCodes">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="individualCodes" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualAddressTypes">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="individualAddressType" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xIndividualAddressToAddressType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="individualAddress" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Адрес</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="addressType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Тип адреса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="editIndividualAddressRequest">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="data" type="tns:xIndividualAddress"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="editIndividualCodeRequest">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="data" type="tns:xIndividualCode"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/common/base/info/build/" elementFormDefault="qualified" targetNamespace="http://atria.cz/common/base/info/build/" version="1.0">
+    <xs:complexType name="BuildInfo">
+        <xs:sequence>
+            <xs:element maxOccurs="1" minOccurs="0" name="full" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="version" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="buildNumber" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="rev" type="xs:string"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="jobNumber" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Void">
+        <xs:sequence/>
+    </xs:complexType>
+    <xs:element name="getVersionRequest" type="tns:Void"/>
+    <xs:element name="getVersionResponse" type="tns:BuildInfo"/>
+</xs:schema>

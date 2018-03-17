@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="/static/wsdl-viewer.xsl"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://atria.cz/medical/integration/patient/api/" xmlns:ns1="http://atria.cz/medical/integration/patient/" elementFormDefault="qualified" targetNamespace="http://atria.cz/medical/integration/patient/api/" version="1.0">
+
+    <xs:import namespace="http://atria.cz/medical/integration/patient/" schemaLocation="https://med.tatar.ru/patients-smart-ws/patient?xsd=patients.xsd"/>
+
+    <xs:element name="getPatient" type="tns:getPatient"/>
+
+    <xs:element name="getPatientResponse" type="tns:getPatientResponse"/>
+
+    <xs:element name="sendPatient" type="tns:sendPatient"/>
+
+    <xs:element name="sendPatientResponse" type="tns:sendPatientResponse"/>
+
+    <xs:element name="searchPatient" type="tns:searchPatient"/>
+
+    <xs:element name="searchPatientResponse" type="tns:searchPatientResponse"/>
+
+    <xs:complexType name="getPatient">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="patientUid" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="getPatientResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:getPatientResult"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="sendPatient">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="patientCard" type="ns1:xPatientCard"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="sendPatientResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:sendPatientResult"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="searchPatient">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="page" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Номер страницы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="lastName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Фамилия пациента</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="firstName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Имя пациента</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="middleName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Отчество пациента</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="birthDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата рождения пациента</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier" type="ns1:xIdentifier">
+                <xs:annotation>
+                    <xs:documentation>Документы пациента, удостоверяющие его личность</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" type="ns1:xAddressSearch">
+                <xs:annotation>
+                    <xs:documentation>Адреса пациента</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="nearestRelative" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Уникальный номер пациента-ближайшего родственника</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="citizenship" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Гражданство</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="regClinicId" type="xs:int">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор МО прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="regClinicCode" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор (ОГРН, ИНН и т.п.) МО прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="regClinicCodeType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Код вида идентификатора (ОГРН, ИНН и т.п.) МО прикрепления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="modifiedSince" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата изменения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="searchPatientResponse">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:searchPatientResult"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
