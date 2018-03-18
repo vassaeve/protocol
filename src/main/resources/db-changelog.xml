@@ -8,11 +8,12 @@
         </preConditions>
         <createTable tableName="PATIENT">
 
-            <column autoIncrement="true" name="ID" type="BIGINT"  startWith="1" incrementBy="1">
-                <constraints primaryKey="true" primaryKeyName="PATIENT_PK"/>
-            </column> 
-
-            <column name="fio" type="VARCHAR(40)"/>
+            <column name="ID" type="VARCHAR(40)"/>
+            <column name="uid" type="VARCHAR(40)"/>
+            <column name="lastName" type="VARCHAR(20)"/>
+            <column name="firstName" type="VARCHAR(20)"/>
+            <column name="middleName" type="VARCHAR(20)"/>
+            <column name="birth" type="date"/>
             
         </createTable>
     </changeSet>

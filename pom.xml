@@ -224,6 +224,7 @@
                     <debug>true</debug>
                 </configuration>
             </plugin>
+            
         </plugins>
     </build>
 

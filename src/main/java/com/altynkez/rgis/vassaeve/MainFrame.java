@@ -1,18 +1,19 @@
 package com.altynkez.rgis.vassaeve;
 
 import com.altynkez.rgis.vassaeve.entity.Patient;
-import com.altynkez.rgis.vassaeve.entity.dto.PatientListViewDto;
-import com.altynkez.rgis.vassaeve.facade.PatientFacade;
-import com.altynkez.rgis.vassaeve.utils.ModelUtils;
+import com.altynkez.rgis.vassaeve.utils.DbUtils;
+import com.altynkez.rgis.vassaeve.utils.EntityDescriptions;
 import com.vassaeve.commons.CommonComparator;
 import com.vassaeve.db.MyTableModel;
 import java.awt.Cursor;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,15 +27,15 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
     private static final long serialVersionUID = 839932036713957084L;
     private static final Logger LOGGER = LoggerFactory.getLogger(MainFrame.class);
 
-    private MyTableModel<PatientListViewDto> patientModel;
-    private List<PatientListViewDto> patientList;
+    private MyTableModel<Patient> patientModel;
+    private List<Patient> patientList;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-        
+
         postInit();
     }
 
@@ -103,26 +104,31 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientsDBGridRefreshSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_patientsDBGridRefreshSelected
-        loadPatients();
+        loadPatients(null);
     }//GEN-LAST:event_patientsDBGridRefreshSelected
 
-    private void loadPatients() {
+    private void loadPatients(Map<String, String> filter) {
+
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (patientModel == null) {
-            patientModel = ModelUtils.createPatientModel();
+            patientModel = new MyTableModel<>(Patient.class);
 
-            Map<String, Float> col_size = ModelUtils.createPatientColumnSize();
-            patientsDBGrid.setColumnsize(col_size);
+            Map<String, EntityDescriptions.FieldDescription> descriptions = EntityDescriptions.PATIENT.getFieldsDescriptions();
+            int colNum = 0;
+
+            for (String fieldName : descriptions.keySet()) {
+                EntityDescriptions.FieldDescription description = descriptions.get(fieldName);
+                if (description.isVisible()) {
+                    patientModel.addColumnDescription(colNum, fieldName, description.getDescription());
+                    colNum++;
+                }
+            }
         }
-        List<Patient> patients = PatientFacade.findAll();
 
         try {
-            patientList = new ArrayList<>(patients.size());
-            patients.stream().forEach((pat) -> {
-                patientList.add(new PatientListViewDto(pat));
-            });
 
-            Collections.sort(patientList, new CommonComparator("dateCreate"));
+            patientList = DbUtils.loadAllPatients(null);
+            Collections.sort(patientList, new CommonComparator("birth"));
 
             patientModel.setRows(patientList);
             patientsDBGrid.setModel(patientModel);
@@ -134,8 +140,8 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 changePatient();
             }
             //DRIVERS.setDefaultRenderer(String.class, new DriverColorCell());
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException | ClassNotFoundException | IllegalAccessException | SQLException ex) {
+            LOGGER.error("ex", ex);
         } finally {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }
@@ -146,20 +152,27 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
         patientsDBGrid.addPropertyChangeListener(this);
 
         SwingUtilities.invokeLater(() -> {
-            statusBar.setText("Загружается список пациентов");
-            loadPatients();
-            statusBar.setText("Список пациентов загружен");
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            try {
+                if (DbUtils.countPatient() != 0) {
+
+                    statusBar.setText("Загружается список пациентов");
+                    loadPatients(null);
+                    statusBar.setText("Список пациентов загружен");
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                }
+            } catch (IOException | ClassNotFoundException | IllegalAccessException | SQLException ex) {
+                JOptionPane.showMessageDialog(this, "ошибка выборки данных", "error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
     }
 
     private void changePatient() {
-
+     
         int modelIndex = patientsDBGrid.convertRowIndexToModel(patientsDBGrid.getSelectedRow());
-        PatientListViewDto patientDto = patientModel.getRow(modelIndex);
-        if (patientDto != null) {
-            patientsDBGrid.firePropertyChange("patient", 0, patientDto.getId());
+        Patient patient = patientModel.getRow(modelIndex);
+        if (patient != null) {
+            patientsDBGrid.firePropertyChange("patient", 0, patient.getId().hashCode()); //id получим дальше
         }
 
     }

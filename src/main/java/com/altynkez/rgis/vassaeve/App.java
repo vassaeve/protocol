@@ -7,7 +7,7 @@ package com.altynkez.rgis.vassaeve;
 public class App {
     
     
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         java.awt.EventQueue.invokeLater(() -> {
             MainFrame frame = new MainFrame();
