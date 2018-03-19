@@ -1,12 +1,12 @@
 package com.altynkez.rgis.vassaeve.facade;
 
 import com.altynkez.rgis.vassaeve.exceptions.PatientFacadeException;
-import com.altynkez.rgis.vassaeve.ws.PatientInterchangeEndPoint;
-import com.altynkez.rgis.vassaeve.ws.PatientInterchangeEndPointService;
-import com.altynkez.rgis.vassaeve.ws.SearchPatientResult;
-import com.altynkez.rgis.vassaeve.ws.XAddressSearch;
-import com.altynkez.rgis.vassaeve.ws.XIdentifier;
-import com.altynkez.rgis.vassaeve.ws.XPatient;
+import com.altynkez.rgis.vassaeve.ws.patients.PatientInterchangeEndPoint;
+import com.altynkez.rgis.vassaeve.ws.patients.PatientInterchangeEndPointService;
+import com.altynkez.rgis.vassaeve.ws.patients.SearchPatientResult;
+import com.altynkez.rgis.vassaeve.ws.patients.XAddressSearch;
+import com.altynkez.rgis.vassaeve.ws.patients.XIdentifier;
+import com.altynkez.rgis.vassaeve.ws.patients.XPatient;
 import com.vassaeve.commons.CalendarUtil;
 import java.util.Collections;
 import java.util.Date;

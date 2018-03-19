@@ -1,11 +1,13 @@
 package com.altynkez.rgis.vassaeve.utils;
 
+import com.altynkez.rgis.vassaeve.entity.Cases;
 import com.altynkez.rgis.vassaeve.entity.Patient;
 import com.altynkez.rgis.vassaeve.helper.PatientHelper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.reflect.FieldUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,7 +32,6 @@ public class DbUtils {
     private static String password;
     private static String url;
 
-    
     /**
      * @return соединение к БД
      * @throws ClassNotFoundException
@@ -81,8 +83,58 @@ public class DbUtils {
             }
         }
     }
-    
-    
+
+    private static int updatePs(PreparedStatement ps, EntityDescriptions entityDescriptions, Object entity, boolean excludePK) throws IllegalAccessException, SQLException {
+        Map<String, EntityDescriptions.FieldDescription> descriptions = entityDescriptions.getFieldsDescriptions();
+        String pkfieldName = entityDescriptions.getPrimaryKeyFieldName();
+        EntityDescriptions.FieldDescription fieldDescription;
+        int i = 1;
+        for (String field : descriptions.keySet()) {
+            if (excludePK && field.equals(pkfieldName)) {
+                //? todo
+            } else {
+                fieldDescription = descriptions.get(field);
+                Object value = FieldUtils.readField(entity, field, true);
+                switch (fieldDescription.getType().getTypeName()) {
+                    case "java.lang.String":
+                        ps.setString(i, value.toString());//???
+                        break;
+                    default:
+                        ps.setObject(i, value);
+                }
+                i++;
+            }
+        }
+        return i;
+    }
+
+    public static void createOneEntity(EntityDescriptions entityDescriptions, Object entity) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getConnection();
+            ps = conn.prepareStatement(entityDescriptions.getINSERT_SQL());
+
+            updatePs(ps, entityDescriptions, entity, false);
+
+            ps.executeUpdate();
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+
+
     public static List<Patient> loadAllPatients(Map<String, String> filter) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
         Connection conn = null;
         ResultSet rs = null;

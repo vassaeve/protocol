@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import org.apache.commons.lang.reflect.FieldUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by e.vassaev.
@@ -20,6 +22,7 @@ import org.apache.commons.lang.reflect.FieldUtils;
 public class PatientViewForm extends javax.swing.JDialog {
 
     private static final long serialVersionUID = -5569027851200514863L;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PatientViewForm.class);
 
     public static final int RET_OK = 1000;
     public static final int RET_CANCEL = 1001;
@@ -57,6 +60,7 @@ public class PatientViewForm extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Пациент");
 
         cancelButton.setText("Закрыть");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +104,6 @@ public class PatientViewForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         doClose(RET_CANCEL);
@@ -137,6 +140,9 @@ public class PatientViewForm extends javax.swing.JDialog {
                 case "java.sql.Date":
                     control = new com.toedter.calendar.JDateChooser();
                     break;
+                case "java.util.Date":
+                    control = new com.toedter.calendar.JDateChooser();
+                    break;
                 case "java.lang.String":
                     control = new JTextField();
                     break;
@@ -144,16 +150,12 @@ public class PatientViewForm extends javax.swing.JDialog {
                     control = new JTextField();
             }
             control.setName(fieldName);
+            control.setEnabled(false);
 
             controlsPanel.add(label);
             controlsPanel.add(control);
         }
 
-    }
-
-    public void setNew(boolean b) {
-
-        setTitle("PATIENT ( просмотр )");
     }
 
     private void proccess() {
@@ -192,7 +194,7 @@ public class PatientViewForm extends javax.swing.JDialog {
 
         } else if (comp instanceof JTextField) {
             ((JTextComponent) comp).setText(val + "");
-        
+
         }
     }
 

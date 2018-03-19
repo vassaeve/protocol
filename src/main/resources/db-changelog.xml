@@ -1,5 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    
     <changeSet author="vassaeve" id="CREATE_PATIENT">
         <preConditions onFail="MARK_RAN">            
             <not>
@@ -7,18 +8,69 @@
             </not>
         </preConditions>
         <createTable tableName="PATIENT">
-
-            <column name="ID" type="VARCHAR(40)"/>
+            <column name="id" type="VARCHAR(40)">
+                <constraints primaryKey="true" primaryKeyName="PATIENT_PK"/>
+            </column>
             <column name="uid" type="VARCHAR(40)"/>
             <column name="lastName" type="VARCHAR(20)"/>
             <column name="firstName" type="VARCHAR(20)"/>
             <column name="middleName" type="VARCHAR(20)"/>
-            <column name="birth" type="date"/>
-            
+            <column name="birth" type="date"/>            
         </createTable>
     </changeSet>
+    
+    <changeSet author="vassaeve" id="PATIENT_UNIQUE_UID">
+        <addUniqueConstraint 
+            columnNames="uid"
+            constraintName="PATIENT_UNIQUE_UID"
+            deferrable="true"
+            disabled="true"
+            initiallyDeferred="true"
+            tableName="PATIENT"/>
+    </changeSet>
       
-      
-      
+    <changeSet author="vassaeve" id="CREATE_CASES">
+        <preConditions onFail="MARK_RAN">            
+            <not>
+                <tableExists  tableName="CASES"/>
+            </not>
+        </preConditions>
+        <createTable tableName="CASES">
+            <column name="ID" type="VARCHAR(40)">
+                <constraints primaryKey="true" primaryKeyName="PATIENT_PK"/>
+            </column>
+            <column name="UID" type="VARCHAR(40)"/>
+            <column name="PATIENTUID" type="VARCHAR(40)"/>
+            <column name="createdDate" type="date"/>            
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="vassaeve" id="SYS_FK_CASES_PATIENT_UID">
+        <preConditions onFail="MARK_RAN">            
+            <not>
+                <foreignKeyConstraintExists  foreignKeyName="SYS_FK_CASES_PATIENT_UID"/>
+            </not>
+        </preConditions>  
+        <addForeignKeyConstraint 
+            baseColumnNames="PATIENTUID" baseTableName="CASES" constraintName="SYS_FK_CASES_PATIENT_UID" 
+            deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="UID" referencedTableName="PATIENT"/>
+    </changeSet>   
+           
+          
+    <changeSet author="vassaeve" id="CREATE_SERVICES">
+        <preConditions onFail="MARK_RAN">            
+            <not>
+                <tableExists  tableName="SERVICES"/>
+            </not>
+        </preConditions>
+        <createTable tableName="SERVICES">
+            <column autoIncrement="true" name="ID" type="BIGINT"  startWith="1" incrementBy="1">
+                <constraints primaryKey="true" primaryKeyName="SERVICES_PK"/>
+            </column> 
+            <column name="CASESUID" type="VARCHAR(40)"/>
+            <column name="PROTOCOL" type="CLOB"/>            
+            <column name="createdDate" type="date"/>            
+        </createTable>
+    </changeSet>   
    
 </databaseChangeLog>

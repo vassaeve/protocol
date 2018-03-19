@@ -1,6 +1,6 @@
 package com.altynkez.rgis.vassaeve.exceptions;
 
-import com.altynkez.rgis.vassaeve.ws.XError;
+import com.altynkez.rgis.vassaeve.ws.patients.XError;
 
 /**
  *
@@ -17,6 +17,10 @@ public class PatientFacadeException extends Exception {
 
     public PatientFacadeException(XError error) {
         this.error = error;
+    }
+
+    public XError getError() {
+        return error;
     }
 
 }

@@ -2,7 +2,7 @@ package com.altynkez.rgis.vassaeve.helper;
 
 import com.altynkez.rgis.vassaeve.entity.Patient;
 import com.altynkez.rgis.vassaeve.utils.EntityDescriptions;
-import com.altynkez.rgis.vassaeve.ws.XPatient;
+import com.altynkez.rgis.vassaeve.ws.patients.XPatient;
 import com.vassaeve.commons.CalendarUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author vassaeve
  */
-public class PatientHelper {
+public final class PatientHelper {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(PatientHelper.class);
     
@@ -42,6 +42,12 @@ public class PatientHelper {
     
     public static Patient createPatient(XPatient patient) {
         Patient entity = new Patient();
+        
+        entity.setId(patient.getId());
+        entity.setUid(patient.getUid());
+        entity.setFirstName(patient.getFirstName());
+        entity.setLastName(patient.getLastName());
+        entity.setMiddleName(patient.getMiddleName());
         try {
             entity.setBirth(CalendarUtil.toDate(patient.getBirthDate()));
         } catch (DatatypeConfigurationException ex) {

@@ -178,9 +178,23 @@
                             <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
                             <wsdlFiles>
                                 <wsdlFile>patients-smart-ws.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>com.altynkez.rgis.vassaeve.ws.patients</packageName>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>wsimport-generate-cases-ws</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlDirectory>src/main/resources/wsdl</wsdlDirectory>
+                            <wsdlFiles>
                                 <wsdlFile>cases-ws.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName>com.altynkez.rgis.vassaeve.ws</packageName>
+                            <packageName>com.altynkez.rgis.vassaeve.ws.cases</packageName>
                         </configuration>
                     </execution>
                     

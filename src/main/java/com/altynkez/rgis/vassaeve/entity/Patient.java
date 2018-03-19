@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public final class Patient {
 
-    @Description(value = "ID", PK = true)
+    @Description(value = "id", PK = true)
     @Visible(order = 1)
     private String id;
 
@@ -20,15 +20,19 @@ public final class Patient {
     private String uid;
 
     @Description("Фамилия пациента")
+    @Visible(order = 2)
     private String lastName;
 
     @Description("Имя")
+    @Visible(order = 3)
     private String firstName;
 
     @Description("Отчество")
+    @Visible(order = 4)
     private String middleName;
 
     @Description("Дата рождения")
+    @Visible(order = 5)
     private Date birth;
 
     public Patient() {
