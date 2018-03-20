@@ -24,7 +24,6 @@ public final class CasesHelper {
 
     public static Cases createCases(MedicalCase cases) {
         Cases entity = new Cases();
-        entity.setId(cases.getId());
         entity.setUid(cases.getUid());
         try {
             entity.setCreatedDate(CalendarUtil.toDate(cases.getCreatedDate()));

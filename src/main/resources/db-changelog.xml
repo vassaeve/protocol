@@ -8,25 +8,14 @@
             </not>
         </preConditions>
         <createTable tableName="PATIENT">
-            <column name="id" type="VARCHAR(40)">
+            <column name="uid" type="VARCHAR(40)">
                 <constraints primaryKey="true" primaryKeyName="PATIENT_PK"/>
             </column>
-            <column name="uid" type="VARCHAR(40)"/>
             <column name="lastName" type="VARCHAR(20)"/>
             <column name="firstName" type="VARCHAR(20)"/>
             <column name="middleName" type="VARCHAR(20)"/>
             <column name="birth" type="date"/>            
         </createTable>
-    </changeSet>
-    
-    <changeSet author="vassaeve" id="PATIENT_UNIQUE_UID">
-        <addUniqueConstraint 
-            columnNames="uid"
-            constraintName="PATIENT_UNIQUE_UID"
-            deferrable="true"
-            disabled="true"
-            initiallyDeferred="true"
-            tableName="PATIENT"/>
     </changeSet>
       
     <changeSet author="vassaeve" id="CREATE_CASES">
@@ -36,10 +25,9 @@
             </not>
         </preConditions>
         <createTable tableName="CASES">
-            <column name="ID" type="VARCHAR(40)">
-                <constraints primaryKey="true" primaryKeyName="PATIENT_PK"/>
+            <column name="UID" type="VARCHAR(40)">
+                <constraints primaryKey="true" primaryKeyName="CASES_PK"/>
             </column>
-            <column name="UID" type="VARCHAR(40)"/>
             <column name="PATIENTUID" type="VARCHAR(40)"/>
             <column name="createdDate" type="date"/>            
         </createTable>

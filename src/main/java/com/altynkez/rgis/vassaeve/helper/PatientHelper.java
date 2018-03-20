@@ -17,12 +17,12 @@ import org.slf4j.LoggerFactory;
  * @author vassaeve
  */
 public final class PatientHelper {
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(PatientHelper.class);
-    
+
     public static Patient createPatientEntity(ResultSet rs) throws SQLException, IllegalAccessException {
         Patient entity = new Patient();
-        
+
         Map<String, EntityDescriptions.FieldDescription> descriptions = EntityDescriptions.PATIENT.getFieldsDescriptions();
         EntityDescriptions.FieldDescription fieldDescription;
         Object value;
@@ -39,11 +39,10 @@ public final class PatientHelper {
         }
         return entity;
     }
-    
+
     public static Patient createPatient(XPatient patient) {
         Patient entity = new Patient();
-        
-        entity.setId(patient.getId());
+
         entity.setUid(patient.getUid());
         entity.setFirstName(patient.getFirstName());
         entity.setLastName(patient.getLastName());
@@ -53,8 +52,8 @@ public final class PatientHelper {
         } catch (DatatypeConfigurationException ex) {
             LOGGER.error("{}", ex);
         }
-        
+
         return entity;
     }
-    
+
 }

@@ -2,7 +2,10 @@ package com.altynkez.rgis.vassaeve.utils;
 
 import com.altynkez.rgis.vassaeve.entity.Cases;
 import com.altynkez.rgis.vassaeve.entity.Patient;
+import com.altynkez.rgis.vassaeve.entity.Services;
+import com.altynkez.rgis.vassaeve.helper.CasesHelper;
 import com.altynkez.rgis.vassaeve.helper.PatientHelper;
+import com.altynkez.rgis.vassaeve.helper.ServicesHelper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -13,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.reflect.FieldUtils;
@@ -97,7 +101,9 @@ public class DbUtils {
                 Object value = FieldUtils.readField(entity, field, true);
                 switch (fieldDescription.getType().getTypeName()) {
                     case "java.lang.String":
-                        ps.setString(i, value.toString());//???
+                        if (Objects.nonNull(value)) {
+                            ps.setString(i, value.toString());//???
+                        }
                         break;
                     default:
                         ps.setObject(i, value);
@@ -134,7 +140,6 @@ public class DbUtils {
         }
     }
 
-
     public static List<Patient> loadAllPatients(Map<String, String> filter) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
         Connection conn = null;
         ResultSet rs = null;
@@ -151,13 +156,92 @@ public class DbUtils {
                 });
                 if (whereClause.length() != 0) {
                     sql.append(" WHERE ");
-
                     sql.append(whereClause.substring(" and ".length()));
                 }
             }
             rs = conn.createStatement().executeQuery(sql.toString());
             while (rs.next()) {
                 result.add(PatientHelper.createPatientEntity(rs));
+            }
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        return result;
+    }
+
+    public static List<Cases> loadAllCases(Map<String, String> filter) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
+        Connection conn = null;
+        ResultSet rs = null;
+        List<Cases> result = new ArrayList<>(0);
+        try {
+            conn = getConnection();
+            StringBuilder sql = new StringBuilder("select * from CASES ");
+            if (filter != null) {
+                StringBuilder whereClause = new StringBuilder();
+                filter.forEach((t, u) -> {
+                    if (!StringUtils.isEmpty(t) && !StringUtils.isEmpty(u)) {
+                        whereClause.append(" and ").append(t).append(" like '%").append(u).append("%'");
+                    }
+                });
+                if (whereClause.length() != 0) {
+                    sql.append(" WHERE ");
+                    sql.append(whereClause.substring(" and ".length()));
+                }
+            }
+            rs = conn.createStatement().executeQuery(sql.toString());
+            while (rs.next()) {
+                result.add(CasesHelper.createCasesEntity(rs));
+            }
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        return result;
+    }
+
+    public static List<Services> loadAllServices(Map<String, String> filter) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
+        Connection conn = null;
+        ResultSet rs = null;
+        List<Services> result = new ArrayList<>(0);
+        try {
+            conn = getConnection();
+            StringBuilder sql = new StringBuilder("select * from SERVICES ");
+            if (filter != null) {
+                StringBuilder whereClause = new StringBuilder();
+                filter.forEach((t, u) -> {
+                    if (!StringUtils.isEmpty(t) && !StringUtils.isEmpty(u)) {
+                        whereClause.append(" and ").append(t).append(" like '%").append(u).append("%'");
+                    }
+                });
+                if (whereClause.length() != 0) {
+                    sql.append(" WHERE ");
+                    sql.append(whereClause.substring(" and ".length()));
+                }
+            }
+            rs = conn.createStatement().executeQuery(sql.toString());
+            while (rs.next()) {
+                result.add(ServicesHelper.createServicesEntity(rs));
             }
         } finally {
             if (rs != null) {

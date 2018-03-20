@@ -12,11 +12,8 @@ import lombok.Data;
 @Data
 public final class Patient {
 
-    @Description(value = "id", PK = true)
+    @Description(value = "uid", PK = true)
     @Visible(order = 1)
-    private String id;
-
-    @Description(value = "uid")
     private String uid;
 
     @Description("Фамилия пациента")

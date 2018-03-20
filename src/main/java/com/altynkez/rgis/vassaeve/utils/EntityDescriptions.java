@@ -4,6 +4,7 @@ import com.altynkez.rgis.vassaeve.annotation.Description;
 import com.altynkez.rgis.vassaeve.annotation.Visible;
 import com.altynkez.rgis.vassaeve.entity.Cases;
 import com.altynkez.rgis.vassaeve.entity.Patient;
+import com.altynkez.rgis.vassaeve.entity.Services;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.Collections;
@@ -21,6 +22,7 @@ public enum EntityDescriptions {
      * Наименование таблицы и pojo-класса
      */
     CASES(initDescriptions(Cases.class)),
+    SERVICES(initDescriptions(Services.class)),
     PATIENT(initDescriptions(Patient.class));
 
     private final Map<String, FieldDescription> fieldsDescriptions;

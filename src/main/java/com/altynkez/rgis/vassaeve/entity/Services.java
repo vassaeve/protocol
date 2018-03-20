@@ -12,14 +12,17 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class Cases {
+public class Services {
 
-    @Description(value = "uid", PK = true)
+    @Description(value = "id", PK = true)
     @Visible(order = 1)
-    private String uid;
+    private Long id;
 
-    @Description(value = "patientUid")
-    private String patientUid;
+    @Description(value = "casesuid")
+    private String casesuid;
+
+    @Description(value = "protocol")
+    private String protocol;
 
     @Description("Дата")
     @Visible(order = 2)

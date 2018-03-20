@@ -2,20 +2,24 @@ package com.altynkez.rgis.vassaeve;
 
 import com.altynkez.rgis.vassaeve.entity.Cases;
 import com.altynkez.rgis.vassaeve.entity.Patient;
-import com.altynkez.rgis.vassaeve.facade.CasesWsFacade;
+import com.altynkez.rgis.vassaeve.entity.Services;
 import com.altynkez.rgis.vassaeve.utils.DbUtils;
 import com.altynkez.rgis.vassaeve.utils.EntityDescriptions;
-import com.altynkez.rgis.vassaeve.ws.cases.MedicalCase;
 import com.vassaeve.commons.CommonComparator;
 import com.vassaeve.db.MyTableModel;
 import java.awt.Cursor;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.sql.SQLException;
 import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import org.slf4j.Logger;
@@ -35,6 +39,9 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
 
     private MyTableModel<Cases> casesModel;
     private List<Cases> casesList;
+
+    private MyTableModel<Services> servicesModel;
+    private List<Services> servicesList;
 
     /**
      * Creates new form MainFrame
@@ -60,7 +67,7 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
         protocolsPanel = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         casesDBGrid = new com.vassaeve.db.DBPanel();
-        serviceDBGrid = new com.vassaeve.db.DBPanel();
+        servicesDBGrid = new com.vassaeve.db.DBPanel();
         statusBar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,21 +84,21 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
         patientsDBGrid.setRemoveButtonVisible(false);
         patientsDBGrid.setSearchButtonVisible(false);
         patientsDBGrid.addDBListener(new com.vassaeve.db.event.DBListener() {
+            public void searchSelected(com.vassaeve.db.event.DBEvent evt) {
+            }
             public void tableClicked(com.vassaeve.db.event.DBEvent evt) {
                 patientsDBGridTableClicked(evt);
-            }
-            public void printSelected(com.vassaeve.db.event.DBEvent evt) {
-            }
-            public void searchSelected(com.vassaeve.db.event.DBEvent evt) {
             }
             public void editSelected(com.vassaeve.db.event.DBEvent evt) {
                 patientsDBGridEditSelected(evt);
             }
+            public void refreshSelected(com.vassaeve.db.event.DBEvent evt) {
+                patientsDBGridRefreshSelected(evt);
+            }
             public void newSelected(com.vassaeve.db.event.DBEvent evt) {
                 patientsDBGridNewSelected(evt);
             }
-            public void refreshSelected(com.vassaeve.db.event.DBEvent evt) {
-                patientsDBGridRefreshSelected(evt);
+            public void printSelected(com.vassaeve.db.event.DBEvent evt) {
             }
             public void removeSelected(com.vassaeve.db.event.DBEvent evt) {
             }
@@ -108,46 +115,48 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
         casesDBGrid.setRemoveButtonVisible(false);
         casesDBGrid.setSearchButtonVisible(false);
         casesDBGrid.addDBListener(new com.vassaeve.db.event.DBListener() {
+            public void searchSelected(com.vassaeve.db.event.DBEvent evt) {
+            }
             public void tableClicked(com.vassaeve.db.event.DBEvent evt) {
                 casesDBGridTableClicked(evt);
             }
-            public void printSelected(com.vassaeve.db.event.DBEvent evt) {
-            }
-            public void searchSelected(com.vassaeve.db.event.DBEvent evt) {
-            }
             public void editSelected(com.vassaeve.db.event.DBEvent evt) {
+            }
+            public void refreshSelected(com.vassaeve.db.event.DBEvent evt) {
+                casesDBGridRefreshSelected(evt);
             }
             public void newSelected(com.vassaeve.db.event.DBEvent evt) {
             }
-            public void refreshSelected(com.vassaeve.db.event.DBEvent evt) {
+            public void printSelected(com.vassaeve.db.event.DBEvent evt) {
             }
             public void removeSelected(com.vassaeve.db.event.DBEvent evt) {
             }
         });
         jTabbedPane1.addTab("Случай", casesDBGrid);
 
-        serviceDBGrid.setPrintButtonVisible(false);
-        serviceDBGrid.setSearchButtonVisible(false);
-        serviceDBGrid.addDBListener(new com.vassaeve.db.event.DBListener() {
-            public void tableClicked(com.vassaeve.db.event.DBEvent evt) {
-            }
-            public void printSelected(com.vassaeve.db.event.DBEvent evt) {
-            }
+        servicesDBGrid.setPrintButtonVisible(false);
+        servicesDBGrid.setRemoveButtonVisible(false);
+        servicesDBGrid.setSearchButtonVisible(false);
+        servicesDBGrid.addDBListener(new com.vassaeve.db.event.DBListener() {
             public void searchSelected(com.vassaeve.db.event.DBEvent evt) {
             }
-            public void editSelected(com.vassaeve.db.event.DBEvent evt) {
-                serviceDBGridEditSelected(evt);
+            public void tableClicked(com.vassaeve.db.event.DBEvent evt) {
             }
-            public void newSelected(com.vassaeve.db.event.DBEvent evt) {
-                serviceDBGridNewSelected(evt);
+            public void editSelected(com.vassaeve.db.event.DBEvent evt) {
+                servicesDBGridEditSelected(evt);
             }
             public void refreshSelected(com.vassaeve.db.event.DBEvent evt) {
-                serviceDBGridRefreshSelected(evt);
+                servicesDBGridRefreshSelected(evt);
+            }
+            public void newSelected(com.vassaeve.db.event.DBEvent evt) {
+                servicesDBGridNewSelected(evt);
+            }
+            public void printSelected(com.vassaeve.db.event.DBEvent evt) {
             }
             public void removeSelected(com.vassaeve.db.event.DBEvent evt) {
             }
         });
-        jTabbedPane1.addTab("Услуги", serviceDBGrid);
+        jTabbedPane1.addTab("Услуги", servicesDBGrid);
 
         protocolsPanel.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
@@ -198,11 +207,17 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 JOptionPane.showMessageDialog(this, "В локальной БД создан новый пациент", "новый пациент", JOptionPane.INFORMATION_MESSAGE);
                 loadPatients(null);
 
-                List<MedicalCase> casesByPatientUid = CasesWsFacade.getCasesByPatientUid(patient.getUid());
-                for (MedicalCase cases : casesByPatientUid) {
-                    DbUtils.createOneEntity(EntityDescriptions.CASES, cases);
-                }
+                Cases cases = new Cases();
+                cases.setPatientUid(patient.getUid());
+                cases.setCreatedDate(new Date());
+                cases.setUid(UUID.randomUUID().toString());
 
+                DbUtils.createOneEntity(EntityDescriptions.CASES, cases);
+
+//                List<MedicalCase> casesByPatientUid = CasesWsFacade.getCasesByPatientUid(patient.getUid());
+//                for (MedicalCase cases : casesByPatientUid) {
+//                    DbUtils.createOneEntity(EntityDescriptions.CASES, cases);
+//                }
             } catch (ClassNotFoundException | SQLException | IOException | IllegalAccessException ex) {
                 LOGGER.error("{}", ex);
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
@@ -218,17 +233,64 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
         changeCases();
     }//GEN-LAST:event_casesDBGridTableClicked
 
-    private void serviceDBGridRefreshSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_serviceDBGridRefreshSelected
-        // TODO add your handling code here:
-    }//GEN-LAST:event_serviceDBGridRefreshSelected
+    private void servicesDBGridRefreshSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_servicesDBGridRefreshSelected
+        loadServicesByCases();
+    }//GEN-LAST:event_servicesDBGridRefreshSelected
 
-    private void serviceDBGridEditSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_serviceDBGridEditSelected
-        // TODO add your handling code here:
-    }//GEN-LAST:event_serviceDBGridEditSelected
+    private void servicesDBGridEditSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_servicesDBGridEditSelected
+        ProtocolForm dlg = new ProtocolForm(this, true);
+        dlg.setLocationRelativeTo(this);
+        dlg.pack();
+        dlg.setVisible(true);
+        if (dlg.getReturnStatus() == ProtocolForm.RET_OK) {
+            Map<String, String> mapka = dlg.getMapka();
+            Properties properties = new Properties();
+            properties.putAll(mapka);
+            StringWriter writer = new StringWriter();
+            try {
+                properties.store(writer, "");
 
-    private void serviceDBGridNewSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_serviceDBGridNewSelected
-        // TODO add your handling code here:
-    }//GEN-LAST:event_serviceDBGridNewSelected
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Ошибка сохранения протокола");
+            }
+        }
+    }//GEN-LAST:event_servicesDBGridEditSelected
+
+    private void servicesDBGridNewSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_servicesDBGridNewSelected
+        Cases cases = getCurrentCases();
+        if (cases != null) {
+
+            ProtocolForm dlg = new ProtocolForm(this, true);
+            dlg.setLocationRelativeTo(this);
+            dlg.pack();
+            dlg.setVisible(true);
+            if (dlg.getReturnStatus() == ProtocolForm.RET_OK) {
+                Map<String, String> mapka = dlg.getMapka();
+                Properties properties = new Properties();
+                properties.putAll(mapka);
+                StringWriter writer = new StringWriter();
+                try {
+                    properties.store(writer, "");
+                    writer.flush();
+                    Services services = new Services();
+                    services.setCasesuid(cases.getUid());
+                    services.setCreatedDate(new Date());
+                    services.setProtocol(writer.toString());
+
+                    DbUtils.createOneEntity(EntityDescriptions.SERVICES, services);
+
+                    loadServicesByCases();
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Ошибка сохранения протокола");
+                }
+            }
+        }
+    }//GEN-LAST:event_servicesDBGridNewSelected
+
+    private void casesDBGridRefreshSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_casesDBGridRefreshSelected
+        loadCases();
+    }//GEN-LAST:event_casesDBGridRefreshSelected
 
     private void loadPatients(Map<String, String> filter) {
 
@@ -273,6 +335,8 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
     private void postInit() {
 
         patientsDBGrid.addPropertyChangeListener(this);
+        casesDBGrid.addPropertyChangeListener(this);
+        servicesDBGrid.addPropertyChangeListener(this);
 
         SwingUtilities.invokeLater(() -> {
             try {
@@ -287,14 +351,20 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 JOptionPane.showMessageDialog(this, "ошибка выборки данных", "error", JOptionPane.ERROR_MESSAGE);
             }
         });
+    }
 
+    private Cases getCurrentCases() {
+        return casesModel.getRow(casesDBGrid.convertRowIndexToModel(casesDBGrid.getSelectedRow()));
+    }
+
+    private Patient getCurrentPatient() {
+        return patientModel.getRow(patientsDBGrid.convertRowIndexToModel(patientsDBGrid.getSelectedRow()));
     }
 
     private void changePatient() {
-        int modelIndex = patientsDBGrid.convertRowIndexToModel(patientsDBGrid.getSelectedRow());
-        Patient patient = patientModel.getRow(modelIndex);
+        Patient patient = getCurrentPatient();
         if (patient != null) {
-            patientsDBGrid.firePropertyChange("patient", 0, patient.getId().hashCode()); //id получим дальше
+            patientsDBGrid.firePropertyChange("patient", 0, patient.getUid().hashCode()); //id получим дальше
         }
     }
 
@@ -307,7 +377,7 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
     com.vassaeve.db.DBPanel patientsDBGrid;
     javax.swing.JPanel patientsPanel;
     javax.swing.JPanel protocolsPanel;
-    com.vassaeve.db.DBPanel serviceDBGrid;
+    com.vassaeve.db.DBPanel servicesDBGrid;
     javax.swing.JLabel statusBar;
     // End of variables declaration//GEN-END:variables
 
@@ -316,26 +386,105 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
         String propname = evt.getPropertyName();
         if (evt.getOldValue() != evt.getNewValue()) {
             if ("patient".equalsIgnoreCase(propname)) {
-                loadEvents();
+                loadCases();
             } else if ("cases".equalsIgnoreCase(propname)) {
-                loadVisitsByCases();
+                loadServicesByCases();
             }
         }
     }
 
-    private void loadEvents() {
-        LOGGER.trace("loadProtocols");
+    private void loadCases() {
+
+        Patient patient = getCurrentPatient();
+        if (patient != null) {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if (casesModel == null) {
+                casesModel = new MyTableModel<>(Cases.class);
+
+                Map<String, EntityDescriptions.FieldDescription> descriptions = EntityDescriptions.CASES.getFieldsDescriptions();
+                int colNum = 0;
+
+                for (String fieldName : descriptions.keySet()) {
+                    EntityDescriptions.FieldDescription description = descriptions.get(fieldName);
+                    if (description.isVisible()) {
+                        casesModel.addColumnDescription(colNum, fieldName, description.getDescription());
+                        colNum++;
+                    }
+                }
+            }
+
+            try {
+                Map<String, String> filter = new HashMap<>(0);
+                filter.put("PATIENTUID", patient.getUid());
+                casesList = DbUtils.loadAllCases(filter);
+                Collections.sort(casesList, new CommonComparator("createdDate"));
+
+                casesModel.setRows(casesList);
+                casesDBGrid.setModel(casesModel);
+
+                int count = casesDBGrid.getRowCount();
+                if (count > 0) {
+                    casesDBGrid.getTable().scrollRectToVisible(casesDBGrid.getTable().getCellRect(0, 0, true));
+                    casesDBGrid.getTable().setRowSelectionInterval(0, 0);
+                    changeCases();
+                }
+
+            } catch (IOException | ClassNotFoundException | IllegalAccessException | SQLException ex) {
+                LOGGER.error("ex", ex);
+            } finally {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        }
+
     }
 
-    private void loadVisitsByCases() {
-        LOGGER.trace("loadVisitsByCases");
+    private void loadServicesByCases() {
+        Cases cases = getCurrentCases();
+        if (cases != null) {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if (servicesModel == null) {
+                servicesModel = new MyTableModel<>(Services.class);
+
+                Map<String, EntityDescriptions.FieldDescription> descriptions = EntityDescriptions.SERVICES.getFieldsDescriptions();
+                int colNum = 0;
+
+                for (String fieldName : descriptions.keySet()) {
+                    EntityDescriptions.FieldDescription description = descriptions.get(fieldName);
+                    if (description.isVisible()) {
+                        servicesModel.addColumnDescription(colNum, fieldName, description.getDescription());
+                        colNum++;
+                    }
+                }
+            }
+
+            try {
+                Map<String, String> filter = new HashMap<>(0);
+                filter.put("CASESUID", cases.getUid());
+                servicesList = DbUtils.loadAllServices(filter);
+                Collections.sort(servicesList, new CommonComparator("createdDate"));
+
+                servicesModel.setRows(servicesList);
+                servicesDBGrid.setModel(servicesModel);
+
+                int count = servicesDBGrid.getRowCount();
+                if (count > 0) {
+                    servicesDBGrid.getTable().scrollRectToVisible(servicesDBGrid.getTable().getCellRect(0, 0, true));
+                    servicesDBGrid.getTable().setRowSelectionInterval(0, 0);
+                }
+
+            } catch (IOException | ClassNotFoundException | IllegalAccessException | SQLException ex) {
+                LOGGER.error("ex", ex);
+            } finally {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        }
+
     }
 
     private void changeCases() {
-        int modelIndex = casesDBGrid.convertRowIndexToModel(casesDBGrid.getSelectedRow());
-        Cases cases = casesModel.getRow(modelIndex);
+        Cases cases = getCurrentCases();
         if (cases != null) {
-            casesDBGrid.firePropertyChange("cases", 0, cases.getId().hashCode()); //id получим дальше
+            casesDBGrid.firePropertyChange("cases", 0, cases.getUid().hashCode()); //id получим дальше
         }
     }
 }

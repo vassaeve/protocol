@@ -15,6 +15,10 @@ import java.util.Properties;
  */
 public final class Preferences {
 
+    public static final String APP_SERVER = "APP.SERVER";
+    public static final String USER_NAME = "USER.NAME";
+    public static final String USER_PSWD = "USER.PSWD";
+
     private static Preferences instance;
 
     public static Preferences getInstance() {
@@ -27,7 +31,7 @@ public final class Preferences {
     private HashMap<String, String> settings;
 
     private Preferences() {
-
+        settings = new HashMap<>(3);
         Properties prop = new Properties();
         try {
             prop.load(new FileInputStream("conf.conf"));

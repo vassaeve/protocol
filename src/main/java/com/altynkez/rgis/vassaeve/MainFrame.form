@@ -69,8 +69,8 @@
                   <Events>
                     <EventHandler event="tableClicked" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="patientsDBGridTableClicked"/>
                     <EventHandler event="editSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="patientsDBGridEditSelected"/>
-                    <EventHandler event="newSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="patientsDBGridNewSelected"/>
                     <EventHandler event="refreshSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="patientsDBGridRefreshSelected"/>
+                    <EventHandler event="newSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="patientsDBGridNewSelected"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -108,6 +108,7 @@
                       </Properties>
                       <Events>
                         <EventHandler event="tableClicked" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="casesDBGridTableClicked"/>
+                        <EventHandler event="refreshSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="casesDBGridRefreshSelected"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -117,15 +118,16 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="com.vassaeve.db.DBPanel" name="serviceDBGrid">
+                    <Component class="com.vassaeve.db.DBPanel" name="servicesDBGrid">
                       <Properties>
                         <Property name="printButtonVisible" type="boolean" value="false"/>
+                        <Property name="removeButtonVisible" type="boolean" value="false"/>
                         <Property name="searchButtonVisible" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="editSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="serviceDBGridEditSelected"/>
-                        <EventHandler event="newSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="serviceDBGridNewSelected"/>
-                        <EventHandler event="refreshSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="serviceDBGridRefreshSelected"/>
+                        <EventHandler event="editSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="servicesDBGridEditSelected"/>
+                        <EventHandler event="refreshSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="servicesDBGridRefreshSelected"/>
+                        <EventHandler event="newSelected" listener="com.vassaeve.db.event.DBListener" parameters="com.vassaeve.db.event.DBEvent" handler="servicesDBGridNewSelected"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
