@@ -56,6 +56,7 @@
                 <constraints primaryKey="true" primaryKeyName="SERVICES_PK"/>
             </column> 
             <column name="CASESUID" type="VARCHAR(40)"/>
+            <column name="zzzz" type="VARCHAR(600)"/>
             <column name="PROTOCOL" type="CLOB"/>            
             <column name="createdDate" type="date"/>            
         </createTable>

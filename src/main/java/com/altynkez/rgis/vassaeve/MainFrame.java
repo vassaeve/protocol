@@ -11,6 +11,7 @@ import java.awt.Cursor;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.sql.SQLException;
 import java.util.Collections;
@@ -22,6 +23,7 @@ import java.util.Properties;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -213,7 +215,7 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 cases.setUid(UUID.randomUUID().toString());
 
                 DbUtils.createOneEntity(EntityDescriptions.CASES, cases);
-
+                loadCases();
 //                List<MedicalCase> casesByPatientUid = CasesWsFacade.getCasesByPatientUid(patient.getUid());
 //                for (MedicalCase cases : casesByPatientUid) {
 //                    DbUtils.createOneEntity(EntityDescriptions.CASES, cases);
@@ -238,19 +240,39 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
     }//GEN-LAST:event_servicesDBGridRefreshSelected
 
     private void servicesDBGridEditSelected(com.vassaeve.db.event.DBEvent evt) {//GEN-FIRST:event_servicesDBGridEditSelected
-        ProtocolForm dlg = new ProtocolForm(this, true);
-        dlg.setLocationRelativeTo(this);
-        dlg.pack();
-        dlg.setVisible(true);
-        if (dlg.getReturnStatus() == ProtocolForm.RET_OK) {
-            Map<String, String> mapka = dlg.getMapka();
-            Properties properties = new Properties();
-            properties.putAll(mapka);
-            StringWriter writer = new StringWriter();
+        Services services = getCurrentServices();
+        if (services != null) {
             try {
-                properties.store(writer, "");
+                ProtocolForm dlg = new ProtocolForm(this, true);
+                Properties prop = new Properties();
+                if (!StringUtils.isEmpty(services.getProtocol())) {
+                    prop.load(new StringReader(services.getProtocol()));
+                }
+                Map<String, String> map = new HashMap<>();
+                prop.stringPropertyNames().forEach((name) -> {
+                    map.put(name, prop.getProperty(name));
+                });
 
-            } catch (IOException ex) {
+                dlg.setMapka(map);
+                dlg.setLocationRelativeTo(this);
+                dlg.pack();
+                dlg.setVisible(true);
+                if (dlg.getReturnStatus() == ProtocolForm.RET_OK) {
+                    Map<String, String> mapka = dlg.getMapka();
+                    Properties properties = new Properties();
+                    properties.putAll(mapka);
+                    StringWriter writer = new StringWriter();
+                    properties.store(writer, "");
+                    writer.flush();
+
+                    services.setProtocol(writer.toString());
+                    services.setZzzz(mapka.get("zzzz"));
+
+                    DbUtils.editOneEntity(EntityDescriptions.SERVICES, services);
+
+                    loadServicesByCases();
+                }
+            } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Ошибка сохранения протокола");
             }
         }
@@ -276,6 +298,7 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                     services.setCasesuid(cases.getUid());
                     services.setCreatedDate(new Date());
                     services.setProtocol(writer.toString());
+                    services.setZzzz(mapka.get("zzzz"));
 
                     DbUtils.createOneEntity(EntityDescriptions.SERVICES, services);
 
@@ -351,6 +374,10 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 JOptionPane.showMessageDialog(this, "ошибка выборки данных", "error", JOptionPane.ERROR_MESSAGE);
             }
         });
+    }
+
+    private Services getCurrentServices() {
+        return servicesModel.getRow(servicesDBGrid.convertRowIndexToModel(servicesDBGrid.getSelectedRow()));
     }
 
     private Cases getCurrentCases() {

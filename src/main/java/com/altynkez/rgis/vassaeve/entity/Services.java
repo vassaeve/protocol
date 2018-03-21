@@ -23,9 +23,13 @@ public class Services {
 
     @Description(value = "protocol")
     private String protocol;
+    
+    @Description(value = "Жалоба")
+     @Visible(order = 2)
+    private String zzzz;
 
     @Description("Дата")
-    @Visible(order = 2)
+    @Visible(order = 3)
     private Date createdDate;
 
 }

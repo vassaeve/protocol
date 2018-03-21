@@ -140,6 +140,33 @@ public class DbUtils {
         }
     }
 
+    public static void editOneEntity(EntityDescriptions entityDescriptions, Object entity) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getConnection();
+            ps = conn.prepareStatement(entityDescriptions.getUPDATE_SQL());
+
+            int i = updatePs(ps, entityDescriptions, entity, true);
+            ps.setString(i, FieldUtils.readField(entity, entityDescriptions.getPrimaryKeyFieldName(), true).toString());
+
+            ps.executeUpdate();
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+
     public static List<Patient> loadAllPatients(Map<String, String> filter) throws ClassNotFoundException, SQLException, IOException, IllegalAccessException {
         Connection conn = null;
         ResultSet rs = null;
