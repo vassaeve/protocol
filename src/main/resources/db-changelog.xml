@@ -29,6 +29,7 @@
                 <constraints primaryKey="true" primaryKeyName="CASES_PK"/>
             </column>
             <column name="PATIENTUID" type="VARCHAR(40)"/>
+            <column name="diagnosis" type="VARCHAR(40)"/>
             <column name="createdDate" type="date"/>            
         </createTable>
     </changeSet>

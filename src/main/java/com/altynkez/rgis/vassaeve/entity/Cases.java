@@ -21,8 +21,13 @@ public class Cases {
     @Description(value = "patientUid")
     private String patientUid;
 
-    @Description("Дата")
+    @Description(value = "diagnosis")
     @Visible(order = 2)
+    private String diagnosis;
+    
+
+    @Description("Дата")
+    @Visible(order = 3)
     private Date createdDate;
 
 }

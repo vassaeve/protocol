@@ -210,6 +210,7 @@ public class MainFrame extends javax.swing.JFrame implements PropertyChangeListe
                 loadPatients(null);
 
                 Cases cases = new Cases();
+                cases.setDiagnosis("Обследование");
                 cases.setPatientUid(patient.getUid());
                 cases.setCreatedDate(new Date());
                 cases.setUid(UUID.randomUUID().toString());

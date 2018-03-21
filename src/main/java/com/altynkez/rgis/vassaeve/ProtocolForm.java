@@ -40,7 +40,11 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,6 +72,17 @@ public class ProtocolForm extends BaseForm {
         initComponents();
 
         MainPane.setSelectedIndex(2);
+
+        HTMLEditorKit kit = new HTMLEditorKit();
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule("body {color:#000; font-family:tahoma; margin: 4px; }");
+        styleSheet.addRule("h4 {font-size:medium; font-family: tahoma;}");
+        styleSheet.addRule("h2 {font-size:large; font-family: tahoma;}");
+        styleSheet.addRule("p {font-size:medium; font-family: tahoma;}");
+
+        Document nn = new HTMLDocument();
+        Conclusion.setDocument(nn);
+        Conclusion.setEditorKit(kit);
     }
 
     public Map<String, String> getMapka() {
@@ -131,6 +146,7 @@ public class ProtocolForm extends BaseForm {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
@@ -195,6 +211,41 @@ public class ProtocolForm extends BaseForm {
         jCheckBox24 = new javax.swing.JCheckBox();
         jCheckBox25 = new javax.swing.JCheckBox();
         jPanel17 = new javax.swing.JPanel();
+        jCheckBox146 = new javax.swing.JCheckBox();
+        jCheckBox147 = new javax.swing.JCheckBox();
+        jCheckBox148 = new javax.swing.JCheckBox();
+        jCheckBox149 = new javax.swing.JCheckBox();
+        jCheckBox150 = new javax.swing.JCheckBox();
+        jCheckBox151 = new javax.swing.JCheckBox();
+        jCheckBox152 = new javax.swing.JCheckBox();
+        jCheckBox153 = new javax.swing.JCheckBox();
+        jCheckBox154 = new javax.swing.JCheckBox();
+        jCheckBox155 = new javax.swing.JCheckBox();
+        jCheckBox156 = new javax.swing.JCheckBox();
+        jCheckBox157 = new javax.swing.JCheckBox();
+        jCheckBox158 = new javax.swing.JCheckBox();
+        jCheckBox159 = new javax.swing.JCheckBox();
+        jCheckBox160 = new javax.swing.JCheckBox();
+        jCheckBox161 = new javax.swing.JCheckBox();
+        jCheckBox162 = new javax.swing.JCheckBox();
+        jCheckBox163 = new javax.swing.JCheckBox();
+        jCheckBox164 = new javax.swing.JCheckBox();
+        jCheckBox165 = new javax.swing.JCheckBox();
+        jCheckBox166 = new javax.swing.JCheckBox();
+        jCheckBox167 = new javax.swing.JCheckBox();
+        jCheckBox168 = new javax.swing.JCheckBox();
+        jCheckBox169 = new javax.swing.JCheckBox();
+        jCheckBox170 = new javax.swing.JCheckBox();
+        jCheckBox171 = new javax.swing.JCheckBox();
+        jCheckBox172 = new javax.swing.JCheckBox();
+        jCheckBox173 = new javax.swing.JCheckBox();
+        jCheckBox174 = new javax.swing.JCheckBox();
+        jCheckBox175 = new javax.swing.JCheckBox();
+        jCheckBox176 = new javax.swing.JCheckBox();
+        jCheckBox177 = new javax.swing.JCheckBox();
+        jCheckBox178 = new javax.swing.JCheckBox();
+        jCheckBox179 = new javax.swing.JCheckBox();
+        jCheckBox180 = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jCheckBox60 = new javax.swing.JCheckBox();
@@ -291,10 +342,49 @@ public class ProtocolForm extends BaseForm {
         jCheckBox143 = new javax.swing.JCheckBox();
         jCheckBox144 = new javax.swing.JCheckBox();
         jCheckBox145 = new javax.swing.JCheckBox();
+        jLabel23 = new javax.swing.JLabel();
+        jCheckBox181 = new javax.swing.JCheckBox();
+        jCheckBox182 = new javax.swing.JCheckBox();
+        jCheckBox183 = new javax.swing.JCheckBox();
+        jCheckBox184 = new javax.swing.JCheckBox();
+        jCheckBox185 = new javax.swing.JCheckBox();
+        jCheckBox186 = new javax.swing.JCheckBox();
+        jCheckBox187 = new javax.swing.JCheckBox();
+        jLabel24 = new javax.swing.JLabel();
+        jCheckBox188 = new javax.swing.JCheckBox();
+        jCheckBox189 = new javax.swing.JCheckBox();
+        jCheckBox190 = new javax.swing.JCheckBox();
+        jCheckBox191 = new javax.swing.JCheckBox();
+        jCheckBox192 = new javax.swing.JCheckBox();
+        jCheckBox193 = new javax.swing.JCheckBox();
+        jCheckBox194 = new javax.swing.JCheckBox();
+        jCheckBox195 = new javax.swing.JCheckBox();
+        jTextField14 = new javax.swing.JTextField();
+        jCheckBox196 = new javax.swing.JCheckBox();
         jCheckBox127 = new javax.swing.JCheckBox();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
+        jPanel36 = new javax.swing.JPanel();
+        jCheckBox197 = new javax.swing.JCheckBox();
+        jCheckBox200 = new javax.swing.JCheckBox();
+        jCheckBox201 = new javax.swing.JCheckBox();
+        jCheckBox202 = new javax.swing.JCheckBox();
+        jPanel37 = new javax.swing.JPanel();
+        jCheckBox198 = new javax.swing.JCheckBox();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jSlider1 = new javax.swing.JSlider();
+        jTextField15 = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jSlider2 = new javax.swing.JSlider();
+        jTextField16 = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        jSlider3 = new javax.swing.JSlider();
+        jTextField17 = new javax.swing.JTextField();
+        jCheckBox199 = new javax.swing.JCheckBox();
+        jLabel29 = new javax.swing.JLabel();
+        jPanel38 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jCheckBox38 = new javax.swing.JCheckBox();
@@ -372,8 +462,6 @@ public class ProtocolForm extends BaseForm {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel12 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Conclusion = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
@@ -382,6 +470,8 @@ public class ProtocolForm extends BaseForm {
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Conclusion = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Поиск пациентов");
@@ -478,7 +568,7 @@ public class ProtocolForm extends BaseForm {
                         .addGap(6, 6, 6)
                         .addComponent(zzzz, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel21))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,7 +577,7 @@ public class ProtocolForm extends BaseForm {
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(zzzz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addContainerGap(654, Short.MAX_VALUE))
         );
 
         MainPane.addTab("Жалобы", jPanel2);
@@ -496,11 +586,11 @@ public class ProtocolForm extends BaseForm {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1186, Short.MAX_VALUE)
+            .addGap(0, 1213, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 707, Short.MAX_VALUE)
         );
 
         MainPane.addTab("Анамнез", jPanel3);
@@ -779,15 +869,236 @@ public class ProtocolForm extends BaseForm {
 
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder("Лимфоузлы"));
 
+        jCheckBox146.setSelected(true);
+        jCheckBox146.setText("без особенностей");
+        jCheckBox146.setName("jCheckBox146"); // NOI18N
+
+        jCheckBox147.setText("увеличены");
+        jCheckBox147.setName("jCheckBox147"); // NOI18N
+
+        jCheckBox148.setText("не увеличены");
+
+        jCheckBox149.setText("подвижные");
+        jCheckBox149.setName("jCheckBox149"); // NOI18N
+
+        jCheckBox150.setText("не спаяны с кожей");
+        jCheckBox150.setName("jCheckBox150"); // NOI18N
+
+        jCheckBox151.setText("спаяны с кожей");
+        jCheckBox151.setName("jCheckBox151"); // NOI18N
+
+        jCheckBox152.setText("безболезненные");
+        jCheckBox152.setName("jCheckBox152"); // NOI18N
+
+        jCheckBox153.setText("болезненные");
+        jCheckBox153.setName("jCheckBox153"); // NOI18N
+
+        jCheckBox154.setText("кожа над л.у. гиперемирована");
+        jCheckBox154.setName("jCheckBox154"); // NOI18N
+
+        jCheckBox155.setText("локальная гиперемия");
+        jCheckBox155.setName("jCheckBox155"); // NOI18N
+
+        jCheckBox156.setText("описать по группам");
+        jCheckBox156.setName("jCheckBox156"); // NOI18N
+
+        jCheckBox157.setText("подчелюстные");
+        jCheckBox157.setName("jCheckBox157"); // NOI18N
+
+        jCheckBox158.setText("шейные");
+        jCheckBox158.setName("jCheckBox158"); // NOI18N
+
+        jCheckBox159.setText("надключичные");
+        jCheckBox159.setName("jCheckBox159"); // NOI18N
+
+        jCheckBox160.setText("подключичные");
+        jCheckBox160.setName("jCheckBox160"); // NOI18N
+
+        jCheckBox161.setText("подмышечные");
+        jCheckBox161.setName("jCheckBox161"); // NOI18N
+
+        jCheckBox162.setText("локтевые");
+        jCheckBox162.setName("jCheckBox162"); // NOI18N
+
+        jCheckBox163.setText("паховые");
+        jCheckBox163.setName("jCheckBox163"); // NOI18N
+
+        jCheckBox164.setText("бедренные");
+        jCheckBox164.setName("jCheckBox164"); // NOI18N
+
+        jCheckBox165.setText("слева");
+        jCheckBox165.setName("l1"); // NOI18N
+
+        jCheckBox166.setText("справа");
+        jCheckBox166.setName("r1"); // NOI18N
+
+        jCheckBox167.setText("слева");
+        jCheckBox167.setName("l2"); // NOI18N
+
+        jCheckBox168.setText("справа");
+        jCheckBox168.setName("r2"); // NOI18N
+
+        jCheckBox169.setText("слева");
+        jCheckBox169.setName("l3"); // NOI18N
+
+        jCheckBox170.setText("справа");
+        jCheckBox170.setName("r3"); // NOI18N
+
+        jCheckBox171.setText("справа");
+        jCheckBox171.setName("r6"); // NOI18N
+
+        jCheckBox172.setText("справа");
+        jCheckBox172.setName("r5"); // NOI18N
+
+        jCheckBox173.setText("справа");
+        jCheckBox173.setName("r4"); // NOI18N
+
+        jCheckBox174.setText("слева");
+        jCheckBox174.setName("l4"); // NOI18N
+
+        jCheckBox175.setText("слева");
+        jCheckBox175.setName("l5"); // NOI18N
+
+        jCheckBox176.setText("слева");
+        jCheckBox176.setName("l6"); // NOI18N
+
+        jCheckBox177.setText("слева");
+        jCheckBox177.setName("l7"); // NOI18N
+
+        jCheckBox178.setText("справа");
+        jCheckBox178.setName("r7"); // NOI18N
+
+        jCheckBox179.setText("слева");
+        jCheckBox179.setName("l8"); // NOI18N
+
+        jCheckBox180.setText("справа");
+        jCheckBox180.setName("r8"); // NOI18N
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox146)
+                    .addComponent(jCheckBox147)
+                    .addComponent(jCheckBox148)
+                    .addComponent(jCheckBox149)
+                    .addComponent(jCheckBox150)
+                    .addComponent(jCheckBox151)
+                    .addComponent(jCheckBox152)
+                    .addComponent(jCheckBox153)
+                    .addComponent(jCheckBox154)
+                    .addComponent(jCheckBox155)
+                    .addComponent(jCheckBox156)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox159)
+                                    .addComponent(jCheckBox160)
+                                    .addComponent(jCheckBox161)
+                                    .addComponent(jCheckBox162)
+                                    .addComponent(jCheckBox163)
+                                    .addComponent(jCheckBox164))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox165)
+                                    .addComponent(jCheckBox167)
+                                    .addComponent(jCheckBox169)
+                                    .addComponent(jCheckBox174)
+                                    .addComponent(jCheckBox175)
+                                    .addComponent(jCheckBox176)
+                                    .addComponent(jCheckBox177)
+                                    .addComponent(jCheckBox179))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox166)
+                                    .addComponent(jCheckBox168)
+                                    .addComponent(jCheckBox170)
+                                    .addComponent(jCheckBox173)
+                                    .addComponent(jCheckBox172)
+                                    .addComponent(jCheckBox171)
+                                    .addComponent(jCheckBox178)
+                                    .addComponent(jCheckBox180)))
+                            .addComponent(jCheckBox158)
+                            .addComponent(jCheckBox157))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCheckBox146)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox147)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox148)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox149)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox150)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox151)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox152)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox153)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox154)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox155)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox156)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox157)
+                    .addComponent(jCheckBox165)
+                    .addComponent(jCheckBox166))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox158)
+                    .addComponent(jCheckBox167)
+                    .addComponent(jCheckBox168))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox159)
+                    .addComponent(jCheckBox169)
+                    .addComponent(jCheckBox170))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addComponent(jCheckBox160)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox161)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox162))
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox174)
+                            .addComponent(jCheckBox173))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox175)
+                            .addComponent(jCheckBox172))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox176)
+                            .addComponent(jCheckBox171))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox163)
+                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCheckBox177)
+                        .addComponent(jCheckBox178)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox164)
+                    .addComponent(jCheckBox179)
+                    .addComponent(jCheckBox180))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -832,12 +1143,12 @@ public class ProtocolForm extends BaseForm {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioButton2))
                             .addComponent(jLabel6))
-                        .addContainerGap(315, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -879,7 +1190,7 @@ public class ProtocolForm extends BaseForm {
                             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 181, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1360,7 +1671,7 @@ public class ProtocolForm extends BaseForm {
                         .addComponent(jCheckBox89, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jCheckBox90, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jCheckBox91))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1383,11 +1694,11 @@ public class ProtocolForm extends BaseForm {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1405,7 +1716,7 @@ public class ProtocolForm extends BaseForm {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         MainPane.addTab("Органы дыхания", jPanel5);
@@ -1456,7 +1767,7 @@ public class ProtocolForm extends BaseForm {
                     .addComponent(jCheckBox135)
                     .addComponent(jCheckBox136)
                     .addComponent(jCheckBox137))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1544,23 +1855,111 @@ public class ProtocolForm extends BaseForm {
         jCheckBox145.setText("     глухие");
         jCheckBox145.setName("jCheckBox145"); // NOI18N
 
+        jLabel23.setFont(jLabel23.getFont().deriveFont(jLabel23.getFont().getStyle() | java.awt.Font.BOLD, jLabel23.getFont().getSize()+1));
+        jLabel23.setText("I Тон:");
+
+        jCheckBox181.setText("без особенностей");
+        jCheckBox181.setName("jCheckBox181"); // NOI18N
+
+        jCheckBox182.setText("не выслушивается");
+        jCheckBox182.setName("jCheckBox182"); // NOI18N
+
+        jCheckBox183.setText("ослаблен");
+        jCheckBox183.setName("jCheckBox183"); // NOI18N
+
+        jCheckBox184.setText("усилен");
+        jCheckBox184.setName("jCheckBox184"); // NOI18N
+
+        jCheckBox185.setText("удлинен");
+        jCheckBox185.setName("jCheckBox185"); // NOI18N
+
+        jCheckBox186.setText("укорочен");
+        jCheckBox186.setName("jCheckBox186"); // NOI18N
+
+        jCheckBox187.setText("раздвоен");
+        jCheckBox187.setName("jCheckBox187"); // NOI18N
+
+        jLabel24.setFont(jLabel24.getFont().deriveFont(jLabel24.getFont().getStyle() | java.awt.Font.BOLD, jLabel24.getFont().getSize()+1));
+        jLabel24.setText("II Тон:");
+
+        jCheckBox188.setText("без особенностей");
+        jCheckBox188.setName("jCheckBox1812"); // NOI18N
+
+        jCheckBox189.setText("не выслушивается");
+        jCheckBox189.setName("jCheckBox1822"); // NOI18N
+
+        jCheckBox190.setText("ослаблен");
+        jCheckBox190.setName("jCheckBox1832"); // NOI18N
+
+        jCheckBox191.setText("усилен");
+        jCheckBox191.setName("jCheckBox1842"); // NOI18N
+
+        jCheckBox192.setText("удлинен");
+        jCheckBox192.setName("jCheckBox1852"); // NOI18N
+
+        jCheckBox193.setText("укорочен");
+        jCheckBox193.setName("jCheckBox1862"); // NOI18N
+
+        jCheckBox194.setText("раздвоен");
+        jCheckBox194.setName("jCheckBox1872"); // NOI18N
+
+        jCheckBox195.setText("добавочный тон");
+        jCheckBox195.setName("jCheckBox195"); // NOI18N
+
+        jTextField14.setName("jTextField14"); // NOI18N
+
+        jCheckBox196.setText("дополнительно");
+        jCheckBox196.setName("jCheckBox196"); // NOI18N
+
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
         jPanel35Layout.setHorizontalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox128)
-                    .addComponent(jLabel22)
                     .addGroup(jPanel35Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addContainerGap()
                         .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox143)
-                            .addComponent(jCheckBox142)
-                            .addComponent(jCheckBox144)
-                            .addComponent(jCheckBox145))))
-                .addContainerGap(128, Short.MAX_VALUE))
+                            .addComponent(jCheckBox128)
+                            .addComponent(jLabel22)
+                            .addGroup(jPanel35Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox143)
+                                    .addComponent(jCheckBox142)
+                                    .addComponent(jCheckBox144)
+                                    .addComponent(jCheckBox145)
+                                    .addGroup(jPanel35Layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addGap(145, 145, 145)
+                                        .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel24)
+                                            .addGroup(jPanel35Layout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jCheckBox189)
+                                                    .addComponent(jCheckBox188)
+                                                    .addComponent(jCheckBox190)
+                                                    .addComponent(jCheckBox191)
+                                                    .addComponent(jCheckBox192)
+                                                    .addComponent(jCheckBox193)
+                                                    .addComponent(jCheckBox194)))))
+                                    .addComponent(jCheckBox195)
+                                    .addGroup(jPanel35Layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jCheckBox196)))))
+                    .addGroup(jPanel35Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox182)
+                            .addComponent(jCheckBox181)
+                            .addComponent(jCheckBox183)
+                            .addComponent(jCheckBox184)
+                            .addComponent(jCheckBox185)
+                            .addComponent(jCheckBox186)
+                            .addComponent(jCheckBox187))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1568,16 +1967,56 @@ public class ProtocolForm extends BaseForm {
                 .addContainerGap()
                 .addComponent(jCheckBox128)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel22)
+                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel35Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox142)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox143)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox144)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox145)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox181)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox182)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox183)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox184)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox185)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox186)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox187))
+                    .addGroup(jPanel35Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox188)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox189)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox190)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox191)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox192)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox193)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCheckBox194)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox195)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox142)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox143)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox144)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox145)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox196)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jCheckBox127.setSelected(true);
@@ -1599,9 +2038,9 @@ public class ProtocolForm extends BaseForm {
                 .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox127)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1624,23 +2063,206 @@ public class ProtocolForm extends BaseForm {
                         .addComponent(jCheckBox127)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         MainPane.addTab("ССС", jPanel6);
+
+        jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder("Живот"));
+
+        jCheckBox197.setSelected(true);
+        jCheckBox197.setText("правильной формы");
+        jCheckBox197.setName("jCheckBox197"); // NOI18N
+
+        jCheckBox200.setSelected(true);
+        jCheckBox200.setText("мягкий");
+        jCheckBox200.setName("jCheckBox200"); // NOI18N
+
+        jCheckBox201.setText("напряженный");
+        jCheckBox201.setName("jCheckBox201"); // NOI18N
+
+        jCheckBox202.setSelected(true);
+        jCheckBox202.setText("не вздут");
+        jCheckBox202.setName("jCheckBox202"); // NOI18N
+
+        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox197)
+                    .addComponent(jCheckBox200)
+                    .addComponent(jCheckBox201)
+                    .addComponent(jCheckBox202))
+                .addContainerGap(125, Short.MAX_VALUE))
+        );
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addComponent(jCheckBox197)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox200)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox201)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox202)
+                .addGap(0, 480, Short.MAX_VALUE))
+        );
+
+        jPanel37.setBorder(javax.swing.BorderFactory.createTitledBorder("Печень"));
+
+        jCheckBox198.setSelected(true);
+        jCheckBox198.setText("Размеры по Курлову");
+        jCheckBox198.setName("jCheckBox198"); // NOI18N
+
+        jLabel25.setText("Перкуторно");
+
+        jLabel26.setText("l.m.d.");
+
+        jSlider1.setMaximum(200);
+        jSlider1.setOrientation(javax.swing.JSlider.VERTICAL);
+        jSlider1.setValue(10);
+        jSlider1.setName("jSlider1"); // NOI18N
+
+        jTextField15.setName("jTextField15"); // NOI18N
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSlider1, org.jdesktop.beansbinding.ELProperty.create("${value}"), jTextField15, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel27.setText("l.m.a.");
+
+        jSlider2.setMaximum(200);
+        jSlider2.setOrientation(javax.swing.JSlider.VERTICAL);
+        jSlider2.setValue(8);
+        jSlider2.setName("jSlider2"); // NOI18N
+
+        jTextField16.setName("jTextField16"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSlider2, org.jdesktop.beansbinding.ELProperty.create("${value}"), jTextField16, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel28.setText("l.c.s.");
+
+        jSlider3.setMaximum(200);
+        jSlider3.setOrientation(javax.swing.JSlider.VERTICAL);
+        jSlider3.setValue(7);
+        jSlider3.setName("jSlider3"); // NOI18N
+
+        jTextField17.setName("jTextField17"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jSlider3, org.jdesktop.beansbinding.ELProperty.create("${value}"), jTextField17, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jCheckBox199.setText("<html>печеночная тупость<br> не определяется</html>");
+
+        jLabel29.setText("Пальпаторно");
+
+        javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
+        jPanel37.setLayout(jPanel37Layout);
+        jPanel37Layout.setHorizontalGroup(
+            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel37Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel29))
+                    .addComponent(jCheckBox198)
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSlider1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSlider2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28)
+                            .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSlider3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jCheckBox199, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(139, Short.MAX_VALUE))
+        );
+        jPanel37Layout.setVerticalGroup(
+            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel37Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox198)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel37Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSlider3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox199, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(262, Short.MAX_VALUE))
+        );
+
+        jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder("Селезенка"));
+
+        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
+        jPanel38.setLayout(jPanel38Layout);
+        jPanel38Layout.setHorizontalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        jPanel38Layout.setVerticalGroup(
+            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 321, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1186, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
-        MainPane.addTab("Живот", jPanel7);
+        MainPane.addTab("Органы пищеварения", jPanel7);
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder("Осмотр поясницы"));
 
@@ -1958,13 +2580,13 @@ public class ProtocolForm extends BaseForm {
                             .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16)
                             .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addComponent(jLabel17)
                         .addGap(34, 34, 34)
                         .addComponent(jLabel18))
                     .addComponent(jLabel20)
                     .addComponent(jCheckBox59))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2033,7 +2655,7 @@ public class ProtocolForm extends BaseForm {
                             .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         MainPane.addTab("МПС", jPanel8);
@@ -2042,11 +2664,11 @@ public class ProtocolForm extends BaseForm {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1186, Short.MAX_VALUE)
+            .addGap(0, 1213, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 609, Short.MAX_VALUE)
+            .addGap(0, 707, Short.MAX_VALUE)
         );
 
         MainPane.addTab("Нервная система", jPanel9);
@@ -2283,7 +2905,7 @@ public class ProtocolForm extends BaseForm {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
         );
 
         MainPane.addTab("Исследования", jPanel10);
@@ -2301,23 +2923,17 @@ public class ProtocolForm extends BaseForm {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 866, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addContainerGap(341, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         MainPane.addTab("Дополнительно", jPanel11);
-
-        Conclusion.setColumns(50);
-        Conclusion.setFont(Conclusion.getFont().deriveFont(Conclusion.getFont().getSize()+2f));
-        Conclusion.setRows(20);
-        Conclusion.setName("Conclusion"); // NOI18N
-        jScrollPane1.setViewportView(Conclusion);
 
         jButton6.setText("Сформировать протокол");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -2341,18 +2957,18 @@ public class ProtocolForm extends BaseForm {
 
         jButton13.setText("Журнал обмена данными");
 
+        jScrollPane4.setViewportView(Conclusion);
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2360,7 +2976,7 @@ public class ProtocolForm extends BaseForm {
                     .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -2370,7 +2986,6 @@ public class ProtocolForm extends BaseForm {
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2384,8 +2999,9 @@ public class ProtocolForm extends BaseForm {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton12)
                         .addGap(33, 33, 33)
-                        .addComponent(jButton13)))
-                .addContainerGap(108, Short.MAX_VALUE))
+                        .addComponent(jButton13))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         MainPane.addTab("Протокол", jPanel12);
@@ -2404,6 +3020,8 @@ public class ProtocolForm extends BaseForm {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2698,6 +3316,7 @@ public class ProtocolForm extends BaseForm {
     private String createConclusion() {
 
         String text = "<html><head></head><body>";
+        text += "Текст протокола. Перевод экранной формы в текст.";
 
         text += "</body></html>";
         return text;
@@ -2729,7 +3348,7 @@ public class ProtocolForm extends BaseForm {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea Conclusion;
+    private javax.swing.JEditorPane Conclusion;
     private javax.swing.JTabbedPane MainPane;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -2802,13 +3421,70 @@ public class ProtocolForm extends BaseForm {
     private javax.swing.JCheckBox jCheckBox143;
     private javax.swing.JCheckBox jCheckBox144;
     private javax.swing.JCheckBox jCheckBox145;
+    private javax.swing.JCheckBox jCheckBox146;
+    private javax.swing.JCheckBox jCheckBox147;
+    private javax.swing.JCheckBox jCheckBox148;
+    private javax.swing.JCheckBox jCheckBox149;
     private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox150;
+    private javax.swing.JCheckBox jCheckBox151;
+    private javax.swing.JCheckBox jCheckBox152;
+    private javax.swing.JCheckBox jCheckBox153;
+    private javax.swing.JCheckBox jCheckBox154;
+    private javax.swing.JCheckBox jCheckBox155;
+    private javax.swing.JCheckBox jCheckBox156;
+    private javax.swing.JCheckBox jCheckBox157;
+    private javax.swing.JCheckBox jCheckBox158;
+    private javax.swing.JCheckBox jCheckBox159;
     private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox160;
+    private javax.swing.JCheckBox jCheckBox161;
+    private javax.swing.JCheckBox jCheckBox162;
+    private javax.swing.JCheckBox jCheckBox163;
+    private javax.swing.JCheckBox jCheckBox164;
+    private javax.swing.JCheckBox jCheckBox165;
+    private javax.swing.JCheckBox jCheckBox166;
+    private javax.swing.JCheckBox jCheckBox167;
+    private javax.swing.JCheckBox jCheckBox168;
+    private javax.swing.JCheckBox jCheckBox169;
     private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox170;
+    private javax.swing.JCheckBox jCheckBox171;
+    private javax.swing.JCheckBox jCheckBox172;
+    private javax.swing.JCheckBox jCheckBox173;
+    private javax.swing.JCheckBox jCheckBox174;
+    private javax.swing.JCheckBox jCheckBox175;
+    private javax.swing.JCheckBox jCheckBox176;
+    private javax.swing.JCheckBox jCheckBox177;
+    private javax.swing.JCheckBox jCheckBox178;
+    private javax.swing.JCheckBox jCheckBox179;
     private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox180;
+    private javax.swing.JCheckBox jCheckBox181;
+    private javax.swing.JCheckBox jCheckBox182;
+    private javax.swing.JCheckBox jCheckBox183;
+    private javax.swing.JCheckBox jCheckBox184;
+    private javax.swing.JCheckBox jCheckBox185;
+    private javax.swing.JCheckBox jCheckBox186;
+    private javax.swing.JCheckBox jCheckBox187;
+    private javax.swing.JCheckBox jCheckBox188;
+    private javax.swing.JCheckBox jCheckBox189;
     private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox190;
+    private javax.swing.JCheckBox jCheckBox191;
+    private javax.swing.JCheckBox jCheckBox192;
+    private javax.swing.JCheckBox jCheckBox193;
+    private javax.swing.JCheckBox jCheckBox194;
+    private javax.swing.JCheckBox jCheckBox195;
+    private javax.swing.JCheckBox jCheckBox196;
+    private javax.swing.JCheckBox jCheckBox197;
+    private javax.swing.JCheckBox jCheckBox198;
+    private javax.swing.JCheckBox jCheckBox199;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox200;
+    private javax.swing.JCheckBox jCheckBox201;
+    private javax.swing.JCheckBox jCheckBox202;
     private javax.swing.JCheckBox jCheckBox21;
     private javax.swing.JCheckBox jCheckBox22;
     private javax.swing.JCheckBox jCheckBox23;
@@ -2910,6 +3586,13 @@ public class ProtocolForm extends BaseForm {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2946,6 +3629,9 @@ public class ProtocolForm extends BaseForm {
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -2958,10 +3644,13 @@ public class ProtocolForm extends BaseForm {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSlider2;
+    private javax.swing.JSlider jSlider3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
@@ -2969,6 +3658,10 @@ public class ProtocolForm extends BaseForm {
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
+    private javax.swing.JTextField jTextField14;
+    private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField16;
+    private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -2979,6 +3672,7 @@ public class ProtocolForm extends BaseForm {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField zzzz;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }
